@@ -1,0 +1,38 @@
+.widget {
+  grid-area: widget;
+  flex: 0.3;
+  padding: 20px;
+  .input {
+    background-color: rgb(225, 232, 235);
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+
+    input {
+      border: none;
+      background-color: rgb(225, 232, 235);
+      font-size: 16px;
+      padding-left: 10px;
+      outline: none;
+      color: rgb(24, 25, 26);
+    }
+    .widget__input--icon {
+      color: gray;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    background-color: rgb(225, 232, 235);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    margin-top: 30px;
+    border-bottom: 1px solid rgb(173, 185, 190);
+    font-size: 18px;
+    font-weight: 800;
+  }
+}

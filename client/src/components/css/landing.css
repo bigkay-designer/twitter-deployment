@@ -1,0 +1,185 @@
+.landing {
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  height: 100vh;
+}
+
+.landing .landing__main {
+  background: #438ab9;
+  background: -webkit-gradient(linear, left top, right top, from(#3b91d8), to(#8bc8f7));
+  background: linear-gradient(90deg, #3b91d8 0%, #8bc8f7 100%);
+}
+
+.landing .landing__aside .landing__login {
+  padding: 20px;
+}
+
+.landing .landing__aside .landing__login form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing .landing__aside .landing__login form input {
+  padding: 10px 15px;
+  border: none;
+  background-color: #f4f4f4;
+  margin-right: 10px;
+  border-bottom: 1px solid var(--twitter-color);
+  outline: none;
+}
+
+.landing .landing__aside .landing__login form input::-webkit-input-placeholder {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.landing .landing__aside .landing__login form input:-ms-input-placeholder {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.landing .landing__aside .landing__login form input::-ms-input-placeholder {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.landing .landing__aside .landing__login form input::placeholder {
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.landing .landing__aside .landing__login form .landing__login__btn {
+  background-color: #fff;
+  color: var(--twitter-color);
+  border-radius: 30px;
+  font-weight: 800;
+}
+
+.landing .landing__aside .landing__login form .landing__login__btn:hover {
+  background-color: var(--twitter-bg);
+}
+
+.landing .landing__aside .landing__twitter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 60%;
+  margin: 200px auto auto;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__title {
+  margin-bottom: 50px;
+  max-width: 300px;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__title .landing__twitter--icon {
+  color: var(--twitter-color);
+  font-size: 46px;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__join .landing__join__btn {
+  width: 340px;
+  margin-top: 15px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 800;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__join .btn1 {
+  background-color: #3f81d8;
+  color: #fff;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__join .btn1:hover {
+  background-color: #648cc0;
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__join .btn2 {
+  border: 1px solid #3f81d8;
+  background-color: #fff;
+  color: var(--twitter-color);
+}
+
+.landing .landing__aside .landing__twitter .landing__twitter__join .btn2:hover {
+  background-color: var(--twitter-bg);
+}
+
+@media screen and (max-width: 450px) {
+  .landing {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    overflow: hidden !important;
+  }
+  .landing .landing__main {
+    display: none;
+  }
+  .landing .landing__aside .landing__login {
+    padding: 10px;
+  }
+  .landing .landing__aside .landing__login form {
+    display: block;
+  }
+  .landing .landing__aside .landing__login form input {
+    width: 85%;
+    margin: 10px 0 10px 0;
+  }
+  .landing .landing__aside .landing__login form .landing__login__btn {
+    border-radius: 0;
+    width: 100px;
+    color: #fff;
+    background-color: #3f81d8;
+  }
+  .landing .landing__aside .landing__twitter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 80%;
+    margin: 110px 55px auto auto;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .landing {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  .landing .landing__twitter .landing__twitter__join .btn1,
+  .landing .landing__twitter .landing__twitter__join .btn2 {
+    width: 300px !important;
+  }
+}
+/*# sourceMappingURL=landing.css.map */

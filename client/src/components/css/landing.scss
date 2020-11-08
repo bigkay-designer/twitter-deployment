@@ -1,0 +1,145 @@
+.landing {
+  flex: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  height: 100vh;
+
+  .landing__main {
+    background: rgb(67, 138, 185);
+    background: linear-gradient(
+      90deg,
+      rgb(59, 145, 216) 0%,
+      rgb(139, 200, 247) 100%
+    );
+  }
+
+  .landing__aside {
+    .landing__login {
+      padding: 20px;
+      form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+          padding: 10px 15px;
+          border: none;
+          background-color: #f4f4f4;
+          margin-right: 10px;
+          border-bottom: 1px solid var(--twitter-color);
+          outline: none;
+          &::placeholder {
+            font-size: 16px;
+            text-transform: capitalize;
+          }
+        }
+        .landing__login__btn {
+          background-color: #fff;
+          color: var(--twitter-color);
+          border-radius: 30px;
+          font-weight: 800;
+
+          &:hover {
+            background-color: var(--twitter-bg);
+          }
+        }
+      }
+    }
+
+    .landing__twitter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 60%;
+      margin: 200px auto auto;
+      .landing__twitter__title {
+        margin-bottom: 50px;
+        max-width: 300px;
+        .landing__twitter--icon {
+          color: var(--twitter-color);
+          font-size: 46px;
+        }
+      }
+      .landing__twitter__join {
+        .landing__join__btn {
+          width: 340px;
+          margin-top: 15px;
+          border-radius: 20px;
+          border: none;
+          font-weight: 800;
+          text-transform: none;
+          text-decoration: none;
+        }
+        .btn1 {
+          background-color: rgb(63, 129, 216);
+          color: #fff;
+          &:hover {
+            background-color: rgb(100, 140, 192);
+          }
+        }
+        .btn2 {
+          border: 1px solid rgb(63, 129, 216);
+          background-color: #fff;
+          color: var(--twitter-color);
+
+          &:hover {
+            background-color: var(--twitter-bg);
+          }
+        }
+      }
+    }
+  }
+}
+
+// media queries
+@media screen and (max-width: 450px) {
+  .landing {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    overflow: hidden !important;
+    .landing__main {
+      display: none;
+    }
+    .landing__aside {
+      .landing__login {
+        padding: 10px;
+        form {
+          display: block;
+          input {
+            width: 85%;
+            margin: 10px 0 10px 0;
+          }
+          .landing__login__btn {
+            border-radius: 0;
+            width: 100px;
+            color: #fff;
+            background-color: #3f81d8;
+          }
+        }
+      }
+      .landing__twitter {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 80%;
+        margin: 110px 55px auto auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .landing {
+    transform: scale(0.9);
+    .landing__twitter {
+      .landing__twitter__join {
+        .btn1,
+        .btn2 {
+          width: 300px !important;
+        }
+      }
+    }
+  }
+}

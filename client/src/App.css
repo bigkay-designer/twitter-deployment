@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --twitter-color: rgba(29, 161, 242, 1);
+  --twitter-bg: rgba(155, 216, 253, 0.4);
+  --twitter-borderBottom: rgb(225, 232, 235);
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 450px) {
+  .App {
+    padding: 0;
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-template-rows: auto !important;
+    grid-template-areas:
+      "feed"
+      "widget"
+      "sidebar";
+  }
+}
