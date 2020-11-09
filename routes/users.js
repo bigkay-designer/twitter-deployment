@@ -14,6 +14,7 @@ router.post("/api/login/", (req, res, next) => {
         if (err) { return next(err)};
         res.send("Successfully Authenticated");
         console.log(`Logged in user:-${req.user.username}`);
+        console.log(req.user)
       });
 
     })(req, res, next);
