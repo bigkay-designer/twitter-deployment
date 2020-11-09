@@ -25,13 +25,11 @@ function Home() {
 
     return (
         <>
-        {data ?
             <div className="App">
                 <Sidebar />
                 <Feed />
                 <Widgegts />
             </div>
-        : <Redirect to="/" /> }
         </>
     )
 }

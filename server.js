@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
+    origin: "https://watchmyexpense.site", // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -50,6 +50,15 @@ app.use(cookieParser(process.env.EXPRESS_SESSION));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
+
+app.use((req, res, next)=> {
+  res.header('Access-Control-Allow-Origin: https://watchmyexpense.site');
+  if(req.method === 'OPTIONS'){
+    res.header('Access-Control-Allow-Method', "PUT, POST, PATCH, DELETE, GET")
+    return res.status(200).json({}) 
+  }
+  next()
+})
 
 app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();

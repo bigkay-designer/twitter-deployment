@@ -15,7 +15,7 @@ function Feed() {
     useEffect(()=>{
             axios.get("/api/post", {withCredentials: true})
             .then(data => {
-                const newPost = data.data
+                // const newPost = data.data
                 setUserPost(data.data)
             })
             .catch(err => console.log(`error ${err}`))
@@ -62,11 +62,13 @@ function Feed() {
             image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
+                id: user._id,
                 username: user.username
             }
         } 
         axios.post("/api/post", newPost, {withCredentials: true})
         .then(res => {
+            // console.log(res)
         })
         .catch(err => console.log(`error ${err.message}`))
 
