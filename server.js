@@ -32,7 +32,7 @@ mongoose.connect(uri, {
 
 // Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "https://watchmyexpense.site", // <-- location of the react app were connecting to
