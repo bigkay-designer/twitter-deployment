@@ -20,7 +20,7 @@ router.route('/api/post').post((req, res)=>{
     let verified = req.body.verified
     let avatar = req.body.avatar
     let author = {
-        // id: req.user._id,
+        id: req.user._id,
         username: req.body.username
     }
     let newPost = new post({displayName: displayName, username: username, text: text, image: image, verified: verified, avatar: avatar, author: author})
