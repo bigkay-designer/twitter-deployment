@@ -26,6 +26,7 @@ function Feed() {
             axios.get('/api/user', {withCredentials: true})
             .then(res => {
                 setUser(res.data)
+                console.log(res)
             })
             .catch(err => console.log(`error ${err}`))
     
