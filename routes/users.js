@@ -6,7 +6,7 @@ let express = require('express'),
 const user = require('../models/user');
 
 
-router.post("/login", (req, res, next) => {
+router.post("/api/login/", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
       if (err) {return next(err);};
       if (!user) res.send("No User Exists");
@@ -19,7 +19,7 @@ router.post("/login", (req, res, next) => {
     })(req, res, next);
   });
 
-router.route('/signup').post((req, res)=>{
+router.route('/api/signup').post((req, res)=>{
     let username = req.body.username
     let name = req.body.name;
     let email = req.body.email
@@ -39,7 +39,7 @@ router.route('/signup').post((req, res)=>{
     })
 })
 
-router.route('/logout').get((req, res)=>{
+router.route('/api/logout').get((req, res)=>{
   // console.log(`logged out user ${req.user.name}`)
   req.logout();
   req.session.destroy(function (err) {
@@ -50,7 +50,7 @@ router.route('/logout').get((req, res)=>{
     
 })
 
-router.get("/user", (req, res) => {
+router.get("/api/user", (req, res) => {
     // console.log(req.user)
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   });

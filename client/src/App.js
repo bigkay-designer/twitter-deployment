@@ -4,7 +4,6 @@ import Home from './components/Home'
 import Landing from './components/Landing'
 import Signup from './components/authentication/Signup'
 import Login from './components/authentication/Login'
-import axios from 'axios'
 
 // App
 function App() {

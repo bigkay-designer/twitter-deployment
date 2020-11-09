@@ -58,7 +58,7 @@ app.use((req, res, next) => {
  });
 
 // using routes
-app.use('/', postRoute)
+app.use(postRoute)
 app.use(userRoute)
 
 app.get('*', (req, res)=>{

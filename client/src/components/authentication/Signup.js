@@ -3,7 +3,7 @@ import {Button} from '@material-ui/core'
 import {Cancel} from '@material-ui/icons'
 import Landing from '../Landing'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import axios from '../../axios'
 
 import './auth.css'
 function Signup() {
@@ -23,7 +23,7 @@ function Signup() {
             name: name,
             verified: true
         }
-        axios.post('http://localhost:3001/signup', newUser)
+        axios.post('/api/signup', newUser)
         .then(res => {
             console.log(res.data)
             res.send(res.data)

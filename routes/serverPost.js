@@ -4,7 +4,7 @@ let post = require('../models/post')
 let user = require('../models/user')
 let middlewareObj = require('../middleware/middleware')
 
-router.route('/').get((req, res)=>{
+router.route('/api/post').get((req, res)=>{
     post.find().sort({_id: -1})
     .then((post) => {
         res.json(post)
@@ -12,7 +12,7 @@ router.route('/').get((req, res)=>{
     .catch(err => console.log(`error ${err}`))
 })
 
-router.route('/').post((req, res)=>{
+router.route('/api/post').post((req, res)=>{
     let displayName = req.body.displayName;
     let username = req.body.username
     let text = req.body.text;
@@ -45,7 +45,7 @@ const isAuth = (req, res, next)=>{
     }
 }
 
-router.route('/:id').delete(isAuth, (req, res)=>{
+router.route('/api/post/:id').delete(isAuth, (req, res)=>{
     post.findByIdAndDelete(req.params.id)
     .then((data) =>{ 
         res.json('post deleted')
@@ -53,7 +53,7 @@ router.route('/:id').delete(isAuth, (req, res)=>{
     .catch(err => res.status(400).json(`error ${err}`))
 })
 
-router.route('/update/:id').post((req, res)=>{
+router.route('/api/post/update/:id').post((req, res)=>{
     post.findById(req.params.id)
     .then((post)=>{
         post.username = req.body.username,

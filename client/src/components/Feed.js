@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
+import axios from '../axios'
 import './css/feed.css'
 import {Button} from '@material-ui/core'
 import {StarOutlined, CropOriginal, InsertEmoticon, Schedule, GifOutlined, AccountCircle, Cancel} from '@material-ui/icons';
@@ -13,18 +13,17 @@ function Feed() {
     const [tweetImage, setTweetImage] = useState('')
 
     useEffect(()=>{
-            axios.get('http://localhost:3001', {withCredentials: true})
+            axios.get("/api/post", {withCredentials: true})
             .then(data => {
                 const newPost = data.data
-                setUserPost(newPost)
-                return newPost
+                setUserPost(data.data)
             })
             .catch(err => console.log(`error ${err}`))
     
     }, [userPost])
 
     useEffect(()=>{
-            axios.get('http://localhost:3001/user', {withCredentials: true})
+            axios.get('/api/user', {withCredentials: true})
             .then(res => {
                 setUser(res.data)
             })
@@ -34,7 +33,7 @@ function Feed() {
 
     const deletePostHandler =(e, dataId) => {
         e.preventDefault()
-        axios.delete(`http://localhost:3001/${dataId}`, {withCredentials: true})
+        axios.delete(`/api/post/${dataId}`, {withCredentials: true})
         .then(posts => {
         })
         .catch(err => console.log(`error ${err}`))
@@ -43,7 +42,6 @@ function Feed() {
 
     const selectFileHandler = (e) =>{
         setTweetImage(URL.createObjectURL(e.target.files[0]))
-        console.log(e.target.files)
     }
 
     const tweetTextHandler = (e)=>{
@@ -64,15 +62,13 @@ function Feed() {
             image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
-                id:user.id,
                 username: user.username
             }
         } 
-        console.log(tweetImage)
-        axios.post('http://localhost:3001/', newPost, {withCredentials: true})
+        axios.post("/api/post", newPost, {withCredentials: true})
         .then(res => {
         })
-        .catch(err => console.log(`error ${err}`))
+        .catch(err => console.log(`error ${err.message}`))
 
         setTweetImage('')
         setTweetText('')

@@ -3,7 +3,7 @@ import {Redirect} from "react-router-dom";
 import {Twitter, Search, MailOutline, PersonOutline, MoreHorizRounded, HomeOutlined, Notifications} from '@material-ui/icons';
 import {Button} from '@material-ui/core'
 import ShowSidebar from './ShowSidebar'
-import axios from 'axios'
+import axios from '../axios'
 import './css/sidebar.css'
 import '../App.css'
 
@@ -15,7 +15,7 @@ function Sidebar() {
         axios({
             method:'GET',
             withCredentials: true,
-            url:"http://localhost:3001/user"
+            url:"/api/user"
         })
         .then(res => {
             setName(res.data.name)
@@ -27,7 +27,7 @@ function Sidebar() {
         axios({
             method:'GET',
             withCredentials: true,
-            url:"http://localhost:3001/logout"
+            url:"/api/logout"
         })
         .then(res => {
             setLoggedOut(true)

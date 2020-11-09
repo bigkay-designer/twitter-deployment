@@ -5,7 +5,7 @@ import {Button} from '@material-ui/core'
 import {Cancel} from '@material-ui/icons'
 import Landing from '../Landing'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import axios from "../../axios"
 
 import './auth.css'
 function Signup() {
@@ -20,7 +20,7 @@ function Signup() {
             username: username,
             password:password,
         }
-        axios.post('/login', newUser, {withCredentials:true})
+        axios.post('/api/login', newUser, {withCredentials:true})
         .then(res => {
             setToHome(true)
             res.send(res)

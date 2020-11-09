@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Redirect} from "react-router-dom";
 import {Button} from '@material-ui/core'
 import {Twitter} from '@material-ui/icons'
-import axios from 'axios'
+import axios from '../axios'
 import {Link} from 'react-router-dom'
 
 import './css/landing.css'
@@ -19,7 +19,7 @@ function Landing() {
             username: username,
             password:password,
         }
-        axios.post('http://localhost:3001/login', newUser, {withCredentials:true})
+        axios.post('/api/login', newUser, {withCredentials:true})
         .then(res => {
             setToHome(true)
             res.send(res)
