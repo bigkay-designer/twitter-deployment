@@ -62,7 +62,7 @@ function Feed() {
             image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
-                id: user._id,
+                // id: user._id,
                 username: user.username
             }
         } 
