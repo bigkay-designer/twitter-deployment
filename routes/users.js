@@ -52,7 +52,7 @@ router.route('/api/logout').get((req, res)=>{
 })
 
 router.get("/api/user", (req, res) => {
-    console.log(req)
+    console.log(req.user)
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   });
 
