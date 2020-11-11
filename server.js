@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://callmyneighbour.site", // <-- location of the react app were connecting to
+    origin: "http://localhost:3000", // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -52,7 +52,7 @@ app.use(passport.session());
 require("./passportConfig")(passport);
 
 app.use((req, res, next)=> {
-  res.header("Access-Control-Allow-Origin", "https://callmyneighbour.site");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   if(req.method === 'OPTIONS'){
     res.header('Access-Control-Allow-Method', "PUT, POST, PATCH, DELETE, GET")
     return res.status(200).json({}) 
