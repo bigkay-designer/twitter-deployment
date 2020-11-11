@@ -63,13 +63,13 @@ function Feed() {
             image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
-                id: user.id,
+                id: user._id,
                 username: user.username
             }
         } 
         axios.post("/api/post", newPost, {withCredentials: true})
         .then(res => {
-            // console.log(res)
+            console.log(res)
         })
         .catch(err => console.log(`error ${err.message}`))
 
