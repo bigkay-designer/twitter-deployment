@@ -33,12 +33,12 @@ mongoose.connect(uri, {
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "https://watchmyexpense.site", // <-- location of the react app were connecting to
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://watchmyexpense.site", // <-- location of the react app were connecting to
+//     credentials: true,
+//   })
+// );
 app.use(
   session({
     secret: process.env.EXPRESS_SESSION,
@@ -51,14 +51,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
-app.use((req, res, next)=> {
-  res.header('Access-Control-Allow-Origin: https://watchmyexpense.site');
-  // if(req.method === 'OPTIONS'){
-  //   res.header('Access-Control-Allow-Method', "PUT, POST, PATCH, DELETE, GET")
-  //   return res.status(200).json({}) 
-  // }
-  next()
-})
+// app.use((req, res, next)=> {
+//   res.header('Access-Control-Allow-Origin: https://watchmyexpense.site');
+//   // if(req.method === 'OPTIONS'){
+//   //   res.header('Access-Control-Allow-Method', "PUT, POST, PATCH, DELETE, GET")
+//   //   return res.status(200).json({}) 
+//   // }
+//   next()
+// })
 
 app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
