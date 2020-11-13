@@ -24,14 +24,8 @@ function Sidebar() {
 
 
     const logout = ()=>{
-        axios({
-            method:'GET',
-            withCredentials: true,
-            url:"/api/logout"
-        })
-        .then(res => {
-            setLoggedOut(true)
-        })
+       localStorage.removeItem("token")
+       setLoggedOut(true)
     }
     return (
         <div className="sidebar">

@@ -61,11 +61,10 @@ router.post("/tokenIsValid", async (req, res) => {
   });
 
 // router.route('/logout').get((req, res)=>{
-//   // console.log(`logged out user ${req.user.name}`)
+//   console.log(res)
   
-//   })
-    
 // })
+    
 
 router.get("/",auth, async (req, res) => {
   const user = await User.findById(req.user);
