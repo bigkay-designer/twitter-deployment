@@ -25,7 +25,6 @@ function Signup() {
         }
         axios.post('/api/signup', newUser)
         .then(res => {
-            console.log(res.data)
             res.send(res.data)
         })
         .catch(err => `error: ${err}`)

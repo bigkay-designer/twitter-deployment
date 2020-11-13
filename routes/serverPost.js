@@ -3,16 +3,17 @@ let router = express.Router()
 let post = require('../models/post')
 let user = require('../models/user')
 let middlewareObj = require('../middleware/middleware')
+const auth = require("../middleware/auth");
 
-router.route('/api/post').get((req, res)=>{
+router.route('/').get((req, res)=>{
     post.find().sort({_id: -1})
     .then((post) => {
         res.json(post)
     })
-    .catch(err => console.log(`error ${err}`))
+    .catch(err => res.send(`error ${err}`))
 })
 
-router.route('/api/post').post((req, res)=>{
+router.route('/posts').post((req, res)=>{
     let displayName = req.body.displayName;
     let username = req.body.username
     let text = req.body.text;
@@ -20,32 +21,15 @@ router.route('/api/post').post((req, res)=>{
     let verified = req.body.verified
     let avatar = req.body.avatar
     let author = {
-        id: req.user._id,
         username: req.body.username
     }
     let newPost = new post({displayName: displayName, username: username, text: text, image: image, verified: verified, avatar: avatar, author: author})
     newPost.save()
     .then(() => res.json('post added'))
-    .catch(err => console.log(`post error ${err}`))
+    .catch(err => res.send(`post error ${err}`))
 })
 
-const isAuth = (req, res, next)=>{
-    if(req.isAuthenticated()){
-        post.findById(req.params.id, (err, post)=>{
-            if(err) return next(err)
-            if(!post) return console.log('no post was found')
-            else{
-                if(post.author.username === req.user.username){
-                    next()
-                }else{
-                    next('Permission denied')
-                }
-            }
-        })
-    }
-}
-
-router.route('/api/post/:id').delete(isAuth, (req, res)=>{
+router.route('/posts/:id').delete((req, res)=>{
     post.findByIdAndDelete(req.params.id)
     .then((data) =>{ 
         res.json('post deleted')
@@ -53,7 +37,7 @@ router.route('/api/post/:id').delete(isAuth, (req, res)=>{
     .catch(err => res.status(400).json(`error ${err}`))
 })
 
-router.route('/api/post/update/:id').post((req, res)=>{
+router.route('/posts/update/:id').post((req, res)=>{
     post.findById(req.params.id)
     .then((post)=>{
         post.username = req.body.username,

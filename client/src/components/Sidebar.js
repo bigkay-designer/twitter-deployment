@@ -14,8 +14,8 @@ function Sidebar() {
     useEffect(()=>{
         axios({
             method:'GET',
-            withCredentials: true,
-            url:"/api/user"
+            url:"/api/",
+            headers: {"auth-token": localStorage.getItem("token")}
         })
         .then(res => {
             setName(res.data.name)

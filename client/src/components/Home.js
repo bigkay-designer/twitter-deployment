@@ -1,27 +1,25 @@
-import React, {useState, useEffect} from 'react'
-import {Redirect} from "react-router-dom";
+import React from 'react'
+// import {Redirect} from "react-router-dom";
 import Sidebar from './Sidebar'
 import Feed from './Feed'
 import Widgegts from './Widget'
-import axios from '../axios'
+// import axios from '../axios'
 
 import '../App.css';
 
 function Home() {
-    const [data, setData]= useState(true)
+    // const [data, setData]= useState(false)
 
 
-    useEffect (()=>{
-             axios({
-                method: "GET",
-                withCredentials: true,
-                url: "/api/user",
-              }).then((res) => {
-                  if(!res.data){
-                      setData(false);
-                  }
-              });
-    }, [])
+    // useEffect (()=>{
+    //          axios({
+    //             method: "GET",
+    //             url: "/api",
+    //             headers: {"auth-token": localStorage.getItem("token")}
+    //           }).then((res) => {
+    //                     setData(true);
+    //           });
+    // }, [])
 
     return (
         <>

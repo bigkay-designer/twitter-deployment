@@ -12,7 +12,7 @@ const post = new schema ({
     author: {
         id: {
           type: mongoose.Schema.Types.ObjectId,
-          // ref: 'user'
+          ref: 'user'
         },
         username: String
       },

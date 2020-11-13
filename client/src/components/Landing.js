@@ -12,17 +12,15 @@ function Landing() {
     const [password, setPassword] = useState('')
     const [toHome, setToHome] = useState(false)
 
-    const onSubmitHandler = (e)=>{
+    const onSubmitHandler = async (e)=>{
         e.preventDefault();
 
-        let newUser = {
-            username: username,
-            password:password,
-        }
-        axios.post('/api/login', newUser, {withCredentials:true})
+        let newUser = {username, password}
+        // const loginResponse = await 
+        axios.post('/api/login', newUser)
         .then(res => {
             setToHome(true)
-            res.send(res)
+            localStorage.setItem("token", res.data.token);
         })
         .catch(err => `error: ${err}`)
 

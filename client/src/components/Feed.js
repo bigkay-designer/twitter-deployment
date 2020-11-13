@@ -8,25 +8,27 @@ import Posts from './Posts';
 function Feed() {
  
     const [userPost, setUserPost] = useState([])
-    const [user, setUser] = useState('')
+    const [postAdded, setPostAdded] = useState()
+    // const [postRemoved, setPostRemoved] = useState(0)
+    const [user, setUser] = useState({token: undefined, user: undefined})
     const [tweetText, setTweetText] = useState('')
     const [tweetImage, setTweetImage] = useState('')
 
     useEffect(()=>{
-            axios.get("/api/post", {withCredentials: true})
+            axios.get("/api/post")
             .then(data => {
-                // const newPost = data.data
-                setUserPost(data.data)
+                const newPost = data.data
+                setUserPost(newPost)
             })
             .catch(err => console.log(`error ${err}`))
     
-    }, [userPost])
+    }, [postAdded])
 
     useEffect(()=>{
-            axios.get('/api/user', {withCredentials: true})
+            axios.get('/api', {headers: {"auth-token": localStorage.getItem("token")}
+            })
             .then(res => {
                 setUser(res.data)
-                console.log(res)
             })
             .catch(err => console.log(`error ${err}`))
     
@@ -34,10 +36,17 @@ function Feed() {
 
     const deletePostHandler =(e, dataId) => {
         e.preventDefault()
-        axios.delete(`/api/post/${dataId}`, {withCredentials: true})
+        axios.delete(`/api/post/posts/${dataId}`)
         .then(posts => {
+    
         })
         .catch(err => console.log(`error ${err}`))
+        axios.get("/api/post")
+        .then(data => {
+            const newPost = data.data
+            setPostAdded(newPost.length)
+            console.log(postAdded)
+        })
 
     }
 
@@ -58,21 +67,27 @@ function Feed() {
         const newPost =  {
             displayName: user.name,
             username: user.username,
-            verified: true,
             text: tweetText,
             image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
-                id: user._id,
-                username: user.username
+                id: user.id,
+                name: user.name
             }
         } 
-        axios.post("/api/post", newPost, {withCredentials: true})
+        axios.post("/api/post/posts", newPost)
         .then(res => {
             // console.log(res)
         })
         .catch(err => console.log(`error ${err.message}`))
 
+        axios.get("/api/post")
+        .then(data => {
+            const newPost = data.data
+            setPostAdded(newPost.length)
+            console.log(postAdded)
+        })
+        .catch(err => console.log(`error ${err}`))
         setTweetImage('')
         setTweetText('')
     }

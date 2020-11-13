@@ -1,59 +1,79 @@
 let express = require('express'),
     router = express.Router()
     bcrypt = require("bcryptjs"),
-    passport = require('passport');
+    jwt = require('jsonwebtoken')
 
-const user = require('../models/user');
+const User = require('../models/user');
+const auth = require("../middleware/auth");
 
-
-router.post("/api/login/", (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-      if (err) {return next(err);};
-      if (!user) res.send("No User Exists");
-      req.logIn(user, (err) => {
-        if (err) { return next(err)};
-        res.send("Successfully Authenticated");
-        console.log(`Logged in user:-${req.user.username}`);
-        console.log(req.user)
-      });
-
-    })(req, res, next);
+router.post("/login", async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    // validate
+    if (!username || !password)
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    const user = await User.findOne({ username: username });
+    if (!user)
+    return res.status(400).json({ msg: "No account with this username has been registered." });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+    res.header("auth-token", token).send({token,user: {id: user._id,name: user.name, username: user.username}})
+    // res.json({token,user: {id: user._id,name: user.name,}});
+    } catch (err) {
+    res.status(500).json({ error: err.message });
+    }
   });
 
-router.route('/api/signup').post((req, res)=>{
-    let username = req.body.username
-    let name = req.body.name;
-    let email = req.body.email
-    let verified = req.body.verified
-
-    user.findOne({username: req.body.username}, async (err, data)=>{
-        if(err) throw err
-        if(data) res.send('user already exist')
-        if(!data){
-            const hashPassword = await bcrypt.hash(req.body.password, 10)
-            const newUser = new user ({username: username,email:email, password: hashPassword, name: name, verified: verified})
-
-            await newUser.save();
-            console.log('user added')
-            res.send('user')
-        }
-    })
+router.route('/signup').post(async (req, res)=>{
+  try {
+    let { email, password, name, username } = req.body;
+    // validate
+    if (!email || !password || !name || !username)
+    return res.status(400).json({ msg: "Not all fields have been entered." });
+    if (password.length < 5)
+    return res.status(400).json({ msg: "The password needs to be at least 5 characters long." });
+    const existingUser = await User.findOne({ email: email });
+    if (existingUser)
+    return res.status(400).json({ msg: "An account with this email already exists." });
+    if (!name) name = email;
+    const salt = await bcrypt.genSalt();
+    const passwordHash = await bcrypt.hash(password, salt);
+    const newUser = new User({email,password: passwordHash,name, username});
+    const savedUser = await newUser.save();
+    res.json(savedUser);
+    } catch (err) {
+    res.status(500).json({ error: err.message });
+    }
 })
+router.post("/tokenIsValid", async (req, res) => {
+  try {
+  const token = req.header("auth-token");
+  if (!token) return res.json(false);
+  const verified = jwt.verify(token, process.env.JWT_SECRET);
+  if (!verified) return res.json(false);
+  const user = await User.findById(verified.id);
+  if (!user) return res.json(false);
+  return res.json(true);
+  } catch (err) {
+  res.status(500).json({ error: err.message });
+  }
+  });
 
-router.route('/api/logout').get((req, res)=>{
-  // console.log(`logged out user ${req.user.name}`)
-  req.logout();
-  req.session.destroy(function (err) {
-    if (err) { return next(err); }
-    // The response should indicate that the user is no longer authenticated.
-    return res.send({ authenticated: req.isAuthenticated() });
-  })
+// router.route('/logout').get((req, res)=>{
+//   // console.log(`logged out user ${req.user.name}`)
+  
+//   })
     
-})
+// })
 
-router.get("/api/user", (req, res) => {
-    console.log(req.user)
-    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+router.get("/",auth, async (req, res) => {
+  const user = await User.findById(req.user);
+  res.json({
+  name: user.name,
+  username:user.username,
+  id: user._id,
   });
+});
 
 module.exports = router
