@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
+import {Redirect} from 'react-router-dom'
 import axios from '../axios'
 import './css/feed.css'
 import {Button} from '@material-ui/core'
 import {StarOutlined, CropOriginal, InsertEmoticon, Schedule, GifOutlined, AccountCircle, Cancel} from '@material-ui/icons';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Posts from './Posts';
 
 function Feed() {
@@ -13,6 +15,9 @@ function Feed() {
     const [user, setUser] = useState({token: undefined, user: undefined})
     const [tweetText, setTweetText] = useState('')
     const [tweetImage, setTweetImage] = useState('')
+    const [loggedout, setLoggedOut] = useState(false)
+    const [tweetBox, setTweetBox] = useState(false)
+    const [closeTeetPopup, setCloseTweetPopup] = useState(false)
 
     useEffect(()=>{
             axios.get("/api/post")
@@ -90,6 +95,7 @@ function Feed() {
         .catch(err => console.log(`error ${err}`))
         setTweetImage('')
         setTweetText('')
+        setTweetBox(false)
     }
    
     const tweetImageBg = {
@@ -98,18 +104,39 @@ function Feed() {
         height: '300px',
         marginBottom: '20px'
     }
+    const logout = ()=>{
+        localStorage.removeItem("token")
+        setLoggedOut(true)
+    }
+    
+    const tweetBoxHandler = (e) => {
+        e.preventDefault()
+        setTimeout(() => {
+            setTweetBox(true) 
+        }, 10)
+    }
+    const redirectHomeHandler = (e)=>{
+        e.preventDefault()
+        setTweetBox(false)
+    }
     return (
         <div className="feed">
             <div className="feed__container">
                 <form onSubmit={submitHandler}>
                     <div className="feed__title">
+                        <div className="feed__user">
+                            <Button className="feed__user__btn" onClick={logout} variant="outlined" >logout</Button>
+                        </div>
                         <h1>home</h1>
                         <StarOutlined className="feed__title--icon" />
                     </div>
-                    <div className="feed__tweet">
+                    <div className={`feed__tweet ${tweetBox? "feed__tweet__popup": null}`}>
+                        <div className="feed__tweet__cancle">
+                            <h3 onClick={redirectHomeHandler}>Cancel</h3>
+                        </div>
                         <div className="feed__tweet__title">
                             <AccountCircle className="tweet__icon" />
-                            <textarea className="feed__input" type="text" value={tweetText} onChange={tweetTextHandler}  cols="30" rows="4">what's happeing?</textarea>
+                            <textarea className="feed__input" type="text" value={tweetText} placeholder="what's happeing?" onChange={tweetTextHandler}  cols="30" rows="3"></textarea>
                         </div>
                         {tweetImage ? <div style={tweetImageBg} className="feed__imageFile">
                                  <span onClick={closeTweetImgHandler}> <Cancel className="feed__imageFile--close" /> </span> 
@@ -127,6 +154,7 @@ function Feed() {
                             <Button className="feed__tweet__btn" variant="outlined" type="submit"  >tweet</Button>
                         </div>
                     </div>
+                
                     {/* ************************************************************************** */}
                     <div className="feed__posts">
                         {userPost.map(data=>(
@@ -145,7 +173,9 @@ function Feed() {
                     </div>
                 </form>
             </div>
-
+            <div className="add__tweet">
+                <Button className="feed__add__tweet__btn" onClick={tweetBoxHandler}><AddCircleOutlineIcon className="feed__add__icon" /></Button>                
+            </div>
         </div>
     )
 }

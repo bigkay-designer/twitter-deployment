@@ -1,7 +1,6 @@
 .widget {
   grid-area: widget;
   flex: 0.3;
-  padding: 20px;
   .input {
     background-color: rgb(225, 232, 235);
     display: flex;
@@ -10,6 +9,7 @@
     border: none;
     border-radius: 20px;
     padding: 10px;
+    margin: 20px;
 
     input {
       border: none;
@@ -30,7 +30,7 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding: 20px;
-    margin-top: 30px;
+    margin: 30px 20px 0;
     border-bottom: 1px solid rgb(173, 185, 190);
     font-size: 18px;
     font-weight: 800;

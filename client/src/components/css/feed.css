@@ -27,8 +27,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px 20px;
+  padding: 10px;
   cursor: pointer;
+}
+
+.feed .feed__container .feed__title .feed__user__btn {
+  background-color: #eb5f5f;
+  border-radius: 7px;
+  color: #fff !important;
+  border: none !important;
+  font-weight: 800;
 }
 
 .feed .feed__container .feed__title h1 {
@@ -58,6 +66,10 @@
       grid-template-areas: "ti ti" "file file" "icon btn";
   border-bottom: 5px solid var(--twitter-borderBottom);
   padding: 10px;
+}
+
+.feed .feed__container .feed__tweet .feed__tweet__cancle {
+  display: none;
 }
 
 .feed .feed__container .feed__tweet .feed__tweet__title {
@@ -194,10 +206,142 @@
 }
 
 @media screen and (max-width: 450px) {
+  .add__tweet {
+    position: fixed;
+    bottom: 80px;
+    right: 0;
+    z-index: 200;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .add__tweet .feed__add__tweet__btn {
+    background-color: var(--twitter-color);
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .add__tweet .feed__add__tweet__btn .feed__add__icon {
+    font-size: 40px;
+    color: #fff;
+  }
+  .add__tweet .feed__add__tweet__btn:hover {
+    background-color: #3270f8;
+  }
   .feed {
     grid-area: feed;
     min-width: auto;
     overflow: visible;
+  }
+  .feed .feed__container .feed__tweet {
+    display: none !important;
+  }
+  .feed .feed__container .feed__tweet__popup {
+    overflow-x: hidden;
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #2b272e;
+    z-index: 300;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__cancle {
+    display: block;
+    margin-bottom: 30px;
+    cursor: pointer;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__cancle h3 {
+    color: var(--twitter-color);
+    font-weight: normal;
+    font-size: 20px;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__cancle h3:hover {
+    text-decoration: underline;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input {
+    margin-left: 25px;
+    color: white;
+    background-color: #2b272e;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input::-webkit-input-placeholder {
+    color: #dfdfdf;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input:-ms-input-placeholder {
+    color: #dfdfdf;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input::-ms-input-placeholder {
+    color: #dfdfdf;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input::placeholder {
+    color: #dfdfdf;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__title .tweet__icon {
+    color: #dadada;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__imageFile {
+    border-radius: 20px;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__imageFile .feed__imageFile--close {
+    color: #fff;
+    float: right;
+    clear: both;
+    padding: 7px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__attachment {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__attachment .tweet__attachment__icon {
+    margin: 0 10px;
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    color: rgba(29, 161, 242, 0.7);
+    cursor: pointer;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__attachment .gif {
+    border: 2px solid rgba(0, 155, 252, 0.7);
+    -webkit-transform: scale(1.7);
+            transform: scale(1.7);
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__btn {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    grid-area: btn;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__btn .feed__tweet__btn {
+    text-transform: capitalize;
+    font-size: 18px !important;
+    background-color: var(--twitter-color) !important;
+    border-radius: 30px !important;
+    border: none !important;
+    color: #fff !important;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  .feed .feed__container .feed__tweet__popup .feed__tweet__btn .feed__tweet__btn:hover {
+    background-color: var(--twitter-bg) !important;
   }
 }
 /*# sourceMappingURL=feed.css.map */

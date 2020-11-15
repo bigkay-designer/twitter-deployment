@@ -49,3 +49,15 @@ body {
       "sidebar";
   }
 }
+@media screen and (max-width: 1050px) {
+  .App {
+    width: fit-content;
+    padding: 0;
+    display: grid !important;
+    grid-template-columns: 20% 80% ;
+    grid-template-rows: auto !important;
+    grid-template-areas:
+      "sidebar feed"
+      ". widget"
+  }
+}
