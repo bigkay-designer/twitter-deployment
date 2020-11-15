@@ -28,6 +28,7 @@
             padding: 10px 0;
           }
           input {
+            text-transform: lowercase;
             width: 100%;
             border: none;
             background-color: #f4f4f4;
@@ -35,6 +36,9 @@
             padding: 15px 0px 15px 7px;
             font-size: 18px;
             outline: none;
+          }
+          input[type="password"] {
+            text-transform: none !important;
           }
         }
 

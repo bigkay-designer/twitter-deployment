@@ -59,6 +59,6 @@ app.get('*', (req, res)=>{
     res.send('404 wrong page')
 })
 
-let port = process.env.PORT ||5000
+let port = process.env.PORT ||3001
 
 app.listen(port, () => console.log(`Server has Started ${port}`))

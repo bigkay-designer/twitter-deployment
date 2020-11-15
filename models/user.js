@@ -8,6 +8,7 @@ const user = new schema ({
     email: {type: String, unique: true, required: true},
     verified: Boolean,
     password: String,
+    msg: {type: String}
 })
 
 

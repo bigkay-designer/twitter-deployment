@@ -34,6 +34,7 @@
 }
 
 .landing .landing__aside .landing__login form input {
+  text-transform: lowercase;
   padding: 10px 15px;
   border: none;
   background-color: #f4f4f4;
@@ -60,6 +61,10 @@
 .landing .landing__aside .landing__login form input::placeholder {
   font-size: 16px;
   text-transform: capitalize;
+}
+
+.landing .landing__aside .landing__login form input[type="password"] {
+  text-transform: none !important;
 }
 
 .landing .landing__aside .landing__login form .landing__login__btn {

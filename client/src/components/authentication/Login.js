@@ -1,18 +1,20 @@
 import React, {useState} from 'react'
 import {Redirect} from "react-router-dom";
-
+import FlashMessage from 'react-flash-message'
 import {Button} from '@material-ui/core'
 import {Cancel} from '@material-ui/icons'
 import Landing from '../Landing'
 import {Link} from 'react-router-dom'
 import axios from "../../axios"
 
+import '../../App.css'
 import './auth.css'
 function Signup() {
     // const [userData, setUserData] = useState({token: undefined, user: undefined})
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [toHome, setToHome] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(false)
 
     const onSubmitHandler = async (e)=>{
         e.preventDefault();
@@ -24,7 +26,12 @@ function Signup() {
             setToHome(true)
             localStorage.setItem("token", res.data.token);
         })
-        .catch(err => `error: ${err}`)
+        .catch(err => {
+            setErrorMessage(true)
+            window.setTimeout(()=> {
+                setErrorMessage(false)
+            }, 5000)
+        })
 
         setUsername('')
         setPassword('')
@@ -54,8 +61,12 @@ function Signup() {
                             <input type="password" name="password" value={password} onChange={e=> setPassword(e.target.value)} required />
                         </div>
                         <Button variant="outlined" fullWidth className="signup__btn" type="submit">log in</Button>
-                        
                     </form>
+                    {errorMessage &&
+                            <FlashMessage duration={5000} persistOnHover = {true}>
+                                <h3 className="error">No account with this username has been found.</h3>
+                            </FlashMessage>
+                    }
                 </div>
             </div>
         </div>

@@ -18,6 +18,25 @@ body {
   padding: 0 10px;
 }
 
+.error {
+  font-size: 18px;
+  background-color: rgb(228, 83, 83);
+  color: ivory;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.success {
+  background-color: rgb(77, 177, 68);
+  font-size: 18px;
+  color: ivory;
+  margin: 15px 0 20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 900;
+}
 @media screen and (max-width: 450px) {
   .App {
     padding: 0;

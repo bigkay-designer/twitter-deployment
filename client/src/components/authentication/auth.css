@@ -41,6 +41,7 @@
 }
 
 .signup .signup__main .signup__form form .form__div input {
+  text-transform: lowercase;
   width: 100%;
   border: none;
   background-color: #f4f4f4;
@@ -48,6 +49,10 @@
   padding: 15px 0px 15px 7px;
   font-size: 18px;
   outline: none;
+}
+
+.signup .signup__main .signup__form form .form__div input[type="password"] {
+  text-transform: none !important;
 }
 
 .signup .signup__main .signup__form form .signup__btn {

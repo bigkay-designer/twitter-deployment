@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import FlashMessage from 'react-flash-message'
 import {Redirect} from "react-router-dom";
 import {Button} from '@material-ui/core'
 import {Twitter} from '@material-ui/icons'
@@ -11,6 +12,7 @@ function Landing() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [toHome, setToHome] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(false)
 
     const onSubmitHandler = async (e)=>{
         e.preventDefault();
@@ -22,7 +24,12 @@ function Landing() {
             setToHome(true)
             localStorage.setItem("token", res.data.token);
         })
-        .catch(err => `error: ${err}`)
+        .catch(err => {
+            setErrorMessage(true)
+            window.setTimeout(()=>{
+                setErrorMessage(false)
+            }, 5000)
+        })
 
         setUsername('')
         setPassword('')
@@ -37,12 +44,17 @@ function Landing() {
             <div className="landing__aside">
                 <div className="landing__login">
                     <form onSubmit={onSubmitHandler}>
-                        <input type="text" placeholder="username" value={username} onChange={e=> setUsername(e.target.value)} />
-                        <input type="password" placeholder="password"  value={password} onChange={e=> setPassword(e.target.value)} />
+                        <input type="text" placeholder="username" value={username} onChange={e=> setUsername(e.target.value)} required />
+                        <input type="password" placeholder="password"  value={password} onChange={e=> setPassword(e.target.value)} required />
                         <div className="landing__login__btn">
                             <Button variant="outlined" fullWidth className="landing__login__btn" type="submit">Log in</Button>
                         </div>
                     </form>
+                    {errorMessage &&
+                            <FlashMessage duration={5000} persistOnHover = {true}>
+                                <h3 className="error">No account with this username has been found.</h3>
+                            </FlashMessage>
+                    }
                 </div>
                 <div className="landing__twitter">
                     <div className="landing__twitter__title">

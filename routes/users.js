@@ -10,8 +10,6 @@ router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     // validate
-    if (!username || !password)
-    return res.status(400).json({ msg: "Not all fields have been entered." });
     const user = await User.findOne({ username: username });
     if (!user)
     return res.status(400).json({ msg: "No account with this username has been registered." });
@@ -19,7 +17,6 @@ router.post("/login", async (req, res, next) => {
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     res.header("auth-token", token).send({token,user: {id: user._id,name: user.name, username: user.username}})
-    // res.json({token,user: {id: user._id,name: user.name,}});
     } catch (err) {
     res.status(500).json({ error: err.message });
     }
@@ -29,9 +26,7 @@ router.route('/signup').post(async (req, res)=>{
   try {
     let { email, password, name, username } = req.body;
     // validate
-    if (!email || !password || !name || !username)
-    return res.status(400).json({ msg: "Not all fields have been entered." });
-    if (password.length < 5)
+    if (password.length < 6)
     return res.status(400).json({ msg: "The password needs to be at least 5 characters long." });
     const existingUser = await User.findOne({ email: email });
     if (existingUser)
@@ -74,5 +69,14 @@ router.get("/",auth, async (req, res) => {
   id: user._id,
   });
 });
+
+router.route("/user").get((req, res)=>{
+  User.find()
+  .then(user =>{
+    res.json(user)
+  })
+  .catch(err => res.send(`error:- ${err} `))
+})
+
 
 module.exports = router
