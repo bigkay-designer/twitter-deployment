@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import FlashMessage from 'react-flash-message'
 import {Redirect} from "react-router-dom";
 import {Button} from '@material-ui/core'
@@ -13,13 +13,14 @@ function Landing() {
     const [password, setPassword] = useState('')
     const [toHome, setToHome] = useState(false)
     const [errorMessage, setErrorMessage] = useState(false)
-    const [landingPopup, setLandingPopup] = useState(true)
+    const [landingPopup, setLandingPopup] = useState(false)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setLandingPopup(false)
-        }, 2000);
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLandingPopup(false)
+    //     }, 1000);
+
+    // }, [])
 
     const onSubmitHandler = async (e)=>{
         e.preventDefault();

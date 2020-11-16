@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import FlashMessage from 'react-flash-message'
 import {Button} from '@material-ui/core'
@@ -8,7 +8,6 @@ import {Link} from 'react-router-dom'
 import axios from '../../axios'
 import '../../App.css'
 import './auth.css'
-import { red } from '@material-ui/core/colors'
 function Signup() {
 
     const [username, setUsername] = useState('')

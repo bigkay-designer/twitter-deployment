@@ -16,10 +16,12 @@ function Widget() {
                 screenName="hannaay__"
                 options={{height: 400}}
             />
+            <div className="widget__twitter__embed">
             
             <TwitterTweetEmbed
                 tweetId={'1321479550002450434'}
             />
+            </div>
             <TwitterShareButton 
                 url={"https://twitter.com/bigkayyy_"}
                 options={{text: 'react is awesome', via: 'hannaay__'}}

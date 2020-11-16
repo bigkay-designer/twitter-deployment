@@ -11,13 +11,11 @@ function Feed() {
  
     const [userPost, setUserPost] = useState([])
     const [postAdded, setPostAdded] = useState()
-    // const [postRemoved, setPostRemoved] = useState(0)
     const [user, setUser] = useState({token: undefined, user: undefined})
     const [tweetText, setTweetText] = useState('')
     const [tweetImage, setTweetImage] = useState('')
     const [loggedout, setLoggedOut] = useState(false)
     const [tweetBox, setTweetBox] = useState(false)
-    const [closeTeetPopup, setCloseTweetPopup] = useState(false)
 
     useEffect(()=>{
             axios.get("/api/post")
@@ -112,6 +110,7 @@ function Feed() {
     const tweetBoxHandler = (e) => {
         e.preventDefault()
         setTimeout(() => {
+            window.scrollTo(0, 0)
             setTweetBox(true) 
         }, 10)
     }
@@ -121,6 +120,7 @@ function Feed() {
     }
     return (
         <div className="feed">
+            {loggedout ? <Redirect to='/' /> : null }
             <div className="feed__container">
                 <form onSubmit={submitHandler}>
                     <div className="feed__title">

@@ -1,9 +1,6 @@
 .sidebar {
-  -webkit-box-flex: 0.1;
-      -ms-flex: 0.1;
-          flex: 0.1;
   margin-top: 10px;
-  padding: 0 20px 0 20px;
+  padding: 0 10px 0 10px;
 }
 
 .sidebar .sidebar__container {
@@ -79,7 +76,7 @@
   font-weight: 800;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 560px) {
   .sidebar {
     grid-area: sidebar;
     padding: 0 !important;
@@ -118,7 +115,7 @@
   }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1060px) {
   .sidebar {
     padding: 0 !important;
   }

@@ -1,5 +1,4 @@
 .feed {
-  flex: 0.6;
   border: 1px solid var(--twitter-borderBottom);
   min-width: fit-content;
   overflow-y: scroll;
@@ -18,6 +17,7 @@
       padding: 10px;
       cursor: pointer;
       .feed__user__btn {
+        display: none;
         background-color: rgb(235, 95, 95);
         border-radius: 7px;
         color: #fff !important;
@@ -25,6 +25,7 @@
         font-weight: 800;
       }
       h1 {
+        flex: 1;
         text-transform: capitalize;
         font-size: 18px;
         color: rgb(27, 26, 26);
@@ -49,7 +50,7 @@
         "icon btn";
       border-bottom: 5px solid var(--twitter-borderBottom);
       padding: 10px;
-      .feed__tweet__cancle{
+      .feed__tweet__cancle {
         display: none;
       }
       .feed__tweet__title {
@@ -132,6 +133,9 @@
       }
     }
   }
+  .add__tweet {
+    display: none;
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -139,24 +143,24 @@
 
 // media queries
 
-@media screen and (max-width: 450px) {
-  
-  .add__tweet{
+@media screen and (max-width: 560px) {
+  .add__tweet {
+    display: block !important;
     position: fixed;
     bottom: 80px;
     right: 0;
     z-index: 200;
     margin-right: 20px;
     cursor: pointer;
-    .feed__add__tweet__btn{
+    .feed__add__tweet__btn {
       background-color: var(--twitter-color);
-      border-radius: 50%;
+      border-radius: 40%;
       padding: 10px;
-      .feed__add__icon{
+      .feed__add__icon {
         font-size: 40px;
         color: #fff;
       }
-      &:hover{
+      &:hover {
         background-color: rgb(50, 112, 248);
       }
     }
@@ -166,29 +170,30 @@
     grid-area: feed;
     min-width: auto;
     overflow: visible;
-    .feed__container{
-      .feed__tweet{
+    .feed__container {
+      .feed__tweet {
         display: none !important;
       }
-      .feed__tweet__popup{
+      .feed__tweet__popup {
         overflow-x: hidden;
         display: block !important;
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
         height: 100%;
         background-color: rgb(43, 39, 46);
         z-index: 300;
 
-        .feed__tweet__cancle{
+        .feed__tweet__cancle {
           display: block;
           margin-bottom: 30px;
           cursor: pointer;
-          h3{
+          h3 {
             color: var(--twitter-color);
             font-weight: normal;
             font-size: 20px;
-            &:hover{
+            &:hover {
               text-decoration: underline;
             }
           }
@@ -197,7 +202,7 @@
           .feed__input {
             margin-left: 25px;
             color: rgb(255, 255, 255);
-            background-color:rgb(43, 39, 46);
+            background-color: rgb(43, 39, 46);
             &::placeholder {
               color: rgb(223, 223, 223);
             }
@@ -206,7 +211,7 @@
             color: rgb(218, 218, 218);
           }
         }
-  
+
         .feed__imageFile {
           border-radius: 20px;
           .feed__imageFile--close {
@@ -218,7 +223,7 @@
             cursor: pointer;
           }
         }
-  
+
         .feed__tweet__attachment {
           position: absolute;
           top: 50%;
@@ -251,16 +256,29 @@
             border-radius: 30px !important;
             border: none !important;
             color: #fff !important;
-            padding:5px 0;
+            padding: 5px 0;
             cursor: pointer;
-  
+
             &:hover {
               background-color: var(--twitter-bg) !important;
             }
           }
         }
       }
+    }
+  }
+}
 
+@media screen and (max-width: 1060px) {
+  .feed {
+    flex: 0 !important;
+    height: 800px !important;
+
+    .feed__user__btn {
+      display: block !important;
+    }
+    h1 {
+      flex: 0.3 !important;
     }
   }
 }
