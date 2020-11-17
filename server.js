@@ -2,7 +2,6 @@
 
 require('dotenv').config()
 let log = console.log
-
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");

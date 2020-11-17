@@ -24,10 +24,11 @@ body {
   font-size: 18px;
   background-color: rgb(228, 83, 83);
   color: ivory;
-  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
+  max-width: 300px;
+  margin: 10px auto auto auto;
 }
 .success {
   background-color: rgb(77, 177, 68);

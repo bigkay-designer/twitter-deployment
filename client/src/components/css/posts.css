@@ -79,6 +79,10 @@
   cursor: pointer;
 }
 
+.posts .posts__body .heartRed {
+  color: red !important;
+}
+
 @media screen and (max-width: 450px) {
   .posts {
     -webkit-transform: scale(0.9);

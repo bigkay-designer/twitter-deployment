@@ -17,6 +17,7 @@ function Feed() {
     const [loggedout, setLoggedOut] = useState(false)
     const [tweetBox, setTweetBox] = useState(false)
 
+
     useEffect(()=>{
             axios.get("/api/post")
             .then(data => {
@@ -118,6 +119,8 @@ function Feed() {
         e.preventDefault()
         setTweetBox(false)
     }
+
+    
     return (
         <div className="feed">
             {loggedout ? <Redirect to='/' /> : null }

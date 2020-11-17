@@ -1,10 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Avatar } from '@material-ui/core';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import {ChatBubbleOutline,FavoriteBorder, DeleteOutline , Repeat} from '@material-ui/icons'
+import {ChatBubbleOutline,Favorite,FavoriteBorder, DeleteOutline , Repeat} from '@material-ui/icons'
 import './css/posts.css'
 function Posts( {displayName,username,verified,text,image,avatar, keys, deletePost, currentuser}) {
     
+    const [likePost, setLikePost] = useState([])
+    const [isPostLiked, setIsPostLiked] = useState(false)
+    const [postLikes, setPostLikes] = useState('')
+
+    let likedUsers = ['']
+
+    const likePostHandler = (e) => {
+        e.preventDefault();
+
+        likedUsers.map(likes=>{
+                
+            if(likes === currentuser){
+                const indexOfUser = likedUsers.indexOf(currentuser)
+                likedUsers.splice(indexOfUser,1)
+                console.log('yay')
+                return setIsPostLiked(false)
+            }else{
+                likedUsers.splice(0,0, currentuser)
+                setPostLikes(likedUsers.length)
+                return setIsPostLiked(true)
+            }
+        })
+        console.log(likedUsers)
+    }
     return (
         <div className="posts"  key={keys}>
             <div className="posts__avatar">
@@ -27,7 +51,11 @@ function Posts( {displayName,username,verified,text,image,avatar, keys, deletePo
                 <div className="posts__icons">
                     <ChatBubbleOutline />
                     <Repeat />
-                    <FavoriteBorder />
+                    {isPostLiked ? 
+                       <span onClick={likePostHandler}> <Favorite className='heartRed' /> </span> 
+                    :  <span onClick={likePostHandler}> <FavoriteBorder /></span>
+                    }
+                    
                     {currentuser === username ?  
                         <span onClick={deletePost}> <DeleteOutline /> </span>
                     :null }
