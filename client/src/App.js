@@ -5,29 +5,13 @@ import Landing from './components/Landing'
 import Signup from './components/authentication/Signup'
 import Login from './components/authentication/Login'
 
+import FileUpload from './components/FilesUpload'
 // App
 function App() {
 
-  // useEffect(()=>{
-  //   const isLoggedIn = async () =>{
-  //     let token = localStorage.getItem("auth-token")
-  //     if(token === null){
-  //       localStorage.setItem ("auth-token", "")
-  //     }
-  //     token = ""
-  //     const tokenResponse = await
-  //     axios.post('http://localhost:5000/api/tokenIsValid', null , {headers: {"auth-token": token}});
-  //     if(tokenResponse.data){
-  //       const userRes = await axios.get('http://localhost:5000/api/', {
-  //         headers: {"auth-token": token}
-  //       });
-  //       setUserData({token, user: userRes.data});
-  //     }
-  //   }
-  //   isLoggedIn()
-  // }, [])
   return (
     <Router>
+        {/* <FileUpload /> */}
       <div className="app">
         <Switch>
           <Route path="/home" component={Home} />

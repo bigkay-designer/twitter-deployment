@@ -4,6 +4,7 @@ require('dotenv').config()
 let log = console.log
 const mongoose = require("mongoose");
 const express = require("express");
+const fileUpload = require('express-fileupload')
 const cors = require("cors");
 const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
@@ -30,8 +31,9 @@ mongoose.connect(uri, {
 .catch(err => log(`error ${err}`))
 
 // Middleware
+app.use(fileUpload())
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use(
   session({
@@ -49,6 +51,23 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
  });
+
+
+ app.post('/api/upload', (req, res)=>{
+  if (req.files === null) {
+    return res.status(400).json({ msg: 'No file uploaded' });
+  }
+
+  const file = req.files.file;
+
+  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+    return res.send({ fileName: file.name, filePath: `/uploads/${file.name}` });
+  })
+ })
 
 // using routes
 app.use("/api/post", postRoute)

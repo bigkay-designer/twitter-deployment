@@ -16,6 +16,9 @@ function Feed() {
     const [tweetImage, setTweetImage] = useState('')
     const [loggedout, setLoggedOut] = useState(false)
     const [tweetBox, setTweetBox] = useState(false)
+    const [file, setFile] = useState('')
+    const [fileName, setFileName] = useState('choose file')
+    const [uploadedFile, setUploadedFile] = useState({myFileName: '', filePath: ''})
 
 
     useEffect(()=>{
@@ -56,6 +59,9 @@ function Feed() {
 
     const selectFileHandler = (e) =>{
         setTweetImage(URL.createObjectURL(e.target.files[0]))
+        let handlerFile = e.target.files[0]
+        setFile(handlerFile)
+        console.log(handlerFile)
     }
 
     const tweetTextHandler = (e)=>{
@@ -66,13 +72,29 @@ function Feed() {
         setTweetImage('')
     }
 
-    const submitHandler = (e)=>{
+    const submitHandler = async (e)=>{
         e.preventDefault();
+
+        // ********************************
+        const formData = new FormData()
+        formData.append('file', file)
+        await axios.post('/api/upload', formData)
+        .then(res => {
+            setUploadedFile({ myFileName: res.data.fileName, filePath: res.data.filePath});
+        })
+        .catch (err=>{
+            if(err.response.status === 500){
+                console.log(err)
+            }else{
+                console.log(err.response.data)
+            }           
+        })
+        // ********************************
         const newPost =  {
             displayName: user.name,
             username: user.username,
             text: tweetText,
-            image: tweetImage,
+            image: uploadedFile.filePath,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
                 id: user.id,
@@ -98,7 +120,7 @@ function Feed() {
     }
    
     const tweetImageBg = {
-        background: `url(${tweetImage}) center center / cover no-repeat`,
+        background: `url(${uploadedFile.filePath}) center center / cover no-repeat`,
         width: '100%',
         height: '300px',
         marginBottom: '20px'
