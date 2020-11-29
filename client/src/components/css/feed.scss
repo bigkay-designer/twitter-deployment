@@ -4,6 +4,8 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  height: 100vh;
+  padding-bottom: 20px;
   .feed__container {
     .feed__title {
       position: sticky;
@@ -169,7 +171,6 @@
   .feed {
     grid-area: feed;
     min-width: auto;
-    overflow: visible;
     .feed__container {
       .feed__tweet {
         display: none !important;
@@ -177,7 +178,7 @@
       .feed__tweet__popup {
         overflow-x: hidden;
         display: block !important;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -226,12 +227,13 @@
 
         .feed__tweet__attachment {
           position: absolute;
-          top: 50%;
+          bottom: 0px;
           left: 0;
           display: flex;
           justify-content: space-evenly;
           align-items: center;
           width: 100%;
+          margin-bottom: 50px;
           .tweet__attachment__icon {
             margin: 0 10px;
             transform: scale(2);

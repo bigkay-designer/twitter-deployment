@@ -1,13 +1,13 @@
 .landing {
   flex: 100%;
-  
-  .landing__container{
+
+  .landing__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     height: 100vh;
   }
-  .landing__popup{
+  .landing__popup {
     position: absolute;
     top: 0;
     left: 0;
@@ -24,12 +24,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .landing__popup__icon{
+    .landing__popup__icon {
       font-size: 90px;
       color: var(--twitter-color);
     }
   }
-  .landing__popup--none{
+  .landing__popup--none {
     display: none;
   }
   .landing__main {
@@ -51,7 +51,7 @@
 
         input {
           text-transform: lowercase;
-          padding: 10px 15px;
+          padding: 15px;
           border: none;
           background-color: #f4f4f4;
           margin-right: 10px;
@@ -155,7 +155,7 @@
         justify-content: center;
         align-items: flex-start;
         width: 80%;
-        margin: 110px 55px auto auto;
+        margin: 90px 55px auto auto;
       }
     }
   }

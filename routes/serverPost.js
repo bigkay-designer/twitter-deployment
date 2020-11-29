@@ -14,6 +14,7 @@ router.route('/').get((req, res)=>{
 })
 
 router.route('/posts').post((req, res)=>{
+
     let displayName = req.body.displayName;
     let username = req.body.username
     let text = req.body.text;
@@ -27,14 +28,14 @@ router.route('/posts').post((req, res)=>{
     newPost.save()
     .then(() => res.json('post added'))
     .catch(err => res.send(`post error ${err}`))
-})
-
-router.route('/posts/:id').delete((req, res)=>{
-    post.findByIdAndDelete(req.params.id)
-    .then((data) =>{ 
-        res.json('post deleted')
-    })
-    .catch(err => res.status(400).json(`error ${err}`))
+    
+    router.route('/posts/:id').delete((req, res)=>{
+        post.findByIdAndDelete(req.params.id)
+        .then((data) =>{ 
+            res.json('post deleted')
+        })
+        .catch(err => res.status(400).json(`error ${err}`))
+      })
 })
 
 router.route('/posts/update/:id').post((req, res)=>{

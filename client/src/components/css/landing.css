@@ -72,7 +72,7 @@
 
 .landing .landing__aside .landing__login form input {
   text-transform: lowercase;
-  padding: 10px 15px;
+  padding: 15px;
   border: none;
   background-color: #f4f4f4;
   margin-right: 10px;
@@ -210,7 +210,7 @@
         -ms-flex-align: start;
             align-items: flex-start;
     width: 80%;
-    margin: 110px 55px auto auto;
+    margin: 90px 55px auto auto;
   }
 }
 

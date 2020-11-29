@@ -6,6 +6,8 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  height: 100vh;
+  padding-bottom: 20px;
 }
 
 .feed .feed__container .feed__title {
@@ -235,7 +237,6 @@
   .feed {
     grid-area: feed;
     min-width: auto;
-    overflow: visible;
   }
   .feed .feed__container .feed__tweet {
     display: none !important;
@@ -243,7 +244,7 @@
   .feed .feed__container .feed__tweet__popup {
     overflow-x: hidden;
     display: block !important;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -297,7 +298,7 @@
   }
   .feed .feed__container .feed__tweet__popup .feed__tweet__attachment {
     position: absolute;
-    top: 50%;
+    bottom: 0px;
     left: 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -309,6 +310,7 @@
         -ms-flex-align: center;
             align-items: center;
     width: 100%;
+    margin-bottom: 50px;
   }
   .feed .feed__container .feed__tweet__popup .feed__tweet__attachment .tweet__attachment__icon {
     margin: 0 10px;

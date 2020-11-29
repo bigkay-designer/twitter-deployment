@@ -76,25 +76,25 @@ function Feed() {
         e.preventDefault();
 
         // ********************************
-        const formData = new FormData()
-        formData.append('file', file)
-        await axios.post('/api/upload', formData)
-        .then(res => {
-            setUploadedFile({ myFileName: res.data.fileName, filePath: res.data.filePath});
-        })
-        .catch (err=>{
-            if(err.response.status === 500){
-                console.log(err)
-            }else{
-                console.log(err.response.data)
-            }           
-        })
+        // const formData = new FormData()
+        // formData.append('file', file)
+        // await axios.post('/api/post/posts', formData)
+        // .then(res => {
+        //     setUploadedFile({ myFileName: res.data.fileName, filePath: res.data.filePath});
+        // })
+        // .catch (err=>{
+        //     if(err.response.status === 500){
+        //         console.log(err)
+        //     }else{
+        //         console.log(err.response.data)
+        //     }           
+        // })
         // ********************************
         const newPost =  {
             displayName: user.name,
             username: user.username,
             text: tweetText,
-            image: uploadedFile.filePath,
+            image: tweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
                 id: user.id,
@@ -120,7 +120,7 @@ function Feed() {
     }
    
     const tweetImageBg = {
-        background: `url(${uploadedFile.filePath}) center center / cover no-repeat`,
+        background: `url(${tweetImage}) center center / cover no-repeat`,
         width: '100%',
         height: '300px',
         marginBottom: '20px'
