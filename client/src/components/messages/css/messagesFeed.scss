@@ -1,0 +1,33 @@
+.messageFeed {
+  border: 1px solid var(--twitter-borderBottom);
+  .messageFeed__title {
+    text-align: center;
+    border: 1px solid var(--twitter-borderBottom);
+  }
+  .messagesFeed__search {
+    border: 1px solid var(--twitter-borderBottom);
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(225, 232, 235);
+      border: none;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 20px;
+      input {
+        border: none;
+        background-color: rgb(225, 232, 235);
+        font-size: 16px;
+        padding-left: 10px;
+        outline: none;
+        color: rgb(24, 25, 26);
+        width: 220px;
+      }
+      .messagesFeed__searchIcon {
+        color: gray;
+        cursor: pointer;
+      }
+    }
+  }
+}

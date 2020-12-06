@@ -1,0 +1,180 @@
+.messageView {
+  position: relative;
+}
+
+.messageView .messageView__defualt {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.messageView .messageView__defualt .messageView__btn {
+  background-color: var(--twitter-color);
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.messageView .messageView__defualt p {
+  color: #949393;
+}
+
+.messageView .messageView {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-bottom: 1px solid var(--twitter-borderBottom);
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.messageView .messageView:hover {
+  background-color: rgba(231, 239, 243, 0.5);
+}
+
+.messageView .messageView .posts__header {
+  width: 420px;
+}
+
+.messageView .messageView .posts__header .posts__headerText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.messageView .messageView .posts__header .posts__headerText h3 {
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.messageView .messageView .posts__header .posts__headerText .span {
+  padding-left: 10px;
+  color: #adadad;
+}
+
+.messageView .messageView .posts__header .posts__headerText .posts__verified {
+  color: var(--twitter-color) !important;
+  font-size: 14px !important;
+  padding-left: 5px;
+}
+
+.messageView .messageView .posts__header .posts__headerText .posts__verified--none {
+  display: none;
+}
+
+.messageView .messageView .posts__header .posts__description {
+  margin: 10px 0;
+  line-height: 1.5em;
+}
+
+.messageView .messageView .posts__header .posts__description span {
+  word-break: break-all;
+  font-size: 14px;
+}
+
+.messageView .messageView .posts__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.messageView .messageView .heartRed {
+  color: red !important;
+}
+
+.messageView .messageView__form {
+  border: 1px solid var(--twitter-borderBottom);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 10% 70% 10%;
+      grid-template-columns: 10% 10% 70% 10%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.messageView .messageView__form .icons {
+  color: var(--twitter-color);
+  padding-left: 10px;
+}
+
+.messageView .messageView__form .icon__send {
+  cursor: pointer;
+}
+
+.messageView .messageView__form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #e1e8eb;
+  border: none;
+  border-radius: 20px;
+  margin: 10px 0 5px;
+  padding: 5px 10px;
+}
+
+.messageView .messageView__form form input {
+  border: none;
+  background-color: #e1e8eb;
+  font-size: 16px;
+  outline: none;
+  color: #18191a;
+  width: 220px;
+}
+
+.messageView .messageView__form form .messagesFeed__searchIcon {
+  color: gray;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .messageView .posts {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  .messageView .posts__body .posts__header {
+    width: 100% !important;
+  }
+}
+/*# sourceMappingURL=messagesView.css.map */

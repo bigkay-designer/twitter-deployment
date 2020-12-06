@@ -53,21 +53,21 @@ app.use((req, res, next) => {
  });
 
 
- app.post('/api/upload', (req, res)=>{
-  if (req.files === null) {
-    return res.status(400).json({ msg: 'No file uploaded' });
-  }
+//  app.post('/api/upload', (req, res)=>{
+//   if (req.files === null) {
+//     return res.status(400).json({ msg: 'No file uploaded' });
+//   }
 
-  const file = req.files.file;
+//   const file = req.files.file;
 
-  file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-    return res.send({ fileName: file.name, filePath: `/uploads/${file.name}` });
-  })
- })
+//   file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).send(err);
+//     }
+//     return res.send({ fileName: file.name, filePath: `/uploads/${file.name}` });
+//   })
+//  })
 
 // using routes
 app.use("/api/post", postRoute)

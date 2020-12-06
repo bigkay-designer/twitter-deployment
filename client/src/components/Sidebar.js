@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 // import FlashMessage from 'react-flash-message'
-import {Redirect} from "react-router-dom";
+import {Redirect, Link} from "react-router-dom";
 import {Twitter, Search, MailOutline, PersonOutline, MoreHorizRounded, HomeOutlined, Notifications} from '@material-ui/icons';
 import {Button} from '@material-ui/core'
 import ShowSidebar from './ShowSidebar'
@@ -37,10 +37,11 @@ function Sidebar() {
             {loggedout ? <Redirect to='/' /> : null }
             <div className="sidebar__container">
                 <Twitter className="sidebar__twitter" />
-                <ShowSidebar active text="home" Icons={HomeOutlined} />
+                <Link to="/home"> <ShowSidebar active text="home" Icons={HomeOutlined} /> </Link>
                 <ShowSidebar  text="explore" Icons={Search} />
                 <ShowSidebar text="notifications" Icons={Notifications} />
-                <ShowSidebar text="messages" Icons={MailOutline} />
+
+                <Link to="/messages"> <ShowSidebar text="messages" Icons={MailOutline} /> </Link>
                 <ShowSidebar displayNone text="profile" Icons={PersonOutline} />
                 <ShowSidebar displayNone text="more" Icons={MoreHorizRounded} />
                 <Button variant="outlined" fullWidth className="sidebar__btn">Tweet</Button>

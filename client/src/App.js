@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Landing from './components/Landing'
 import Signup from './components/authentication/Signup'
 import Login from './components/authentication/Login'
+import Messages from './components/messages/Message'
 
 import FileUpload from './components/FilesUpload'
 // App
@@ -14,6 +15,7 @@ function App() {
         {/* <FileUpload /> */}
       <div className="app">
         <Switch>
+          <Route path="/messages" component={Messages} />
           <Route path="/home" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />

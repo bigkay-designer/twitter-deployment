@@ -52,7 +52,6 @@ function Feed() {
         .then(data => {
             const newPost = data.data
             setPostAdded(newPost.length)
-            console.log(postAdded)
         })
 
     }
@@ -111,7 +110,6 @@ function Feed() {
         .then(data => {
             const newPost = data.data
             setPostAdded(newPost.length)
-            console.log(postAdded)
         })
         .catch(err => console.log(`error ${err}`))
         setTweetImage('')
