@@ -1,11 +1,71 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from '../../axios'
 import {Button} from '@material-ui/core'
 import { Avatar } from '@material-ui/core';
-import {CropOriginal, InsertEmoticon, GifOutlined, Send} from '@material-ui/icons';
+import {CropOriginal, InsertEmoticon, GifOutlined, Send, DeleteOutline} from '@material-ui/icons';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 import './css/messagesView.css'
 function MessageView() {
+    const [message, setMessage] = useState([])
+    const [messageText, setMessageText] = useState('')
+    const [messageRender, setMessageRender] = useState()
+    const [user, setUser] = useState({token: undefined, user: undefined})
+
+    useEffect(()=>{
+        axios.get('/api/message')
+        .then(data=>{
+            let newMessage = data.data
+            setMessage(newMessage)
+            setMessageRender(newMessage.length)
+        })
+    }, [])
+    useEffect(()=>{
+        axios.get('/api', {headers: {"auth-token": localStorage.getItem("token")}
+        })
+        .then(res => {
+            setUser(res.data)
+        })
+        .catch(err => console.log(`error ${err}`))
+}, [])
+
+    const onSubmitHandler =  (e)=>{
+        e.preventDefault()
+        let newData = {
+            message: messageText,
+            name: user.username,
+            time: '10:20'
+        }
+
+        axios.post('api/message/new', newData)
+        .then(res=>{
+            // console.log(res)
+        })
+        .catch(err => console.log(err))
+        
+        axios.get('/api/message')
+        .then(data => {
+            let message = data.data
+            setMessageRender(message.length)
+        })
+
+        setMessageText('')
+    }
+
+    const deleteMessageHandler = (e, messageId) =>{
+        axios.delete(`/api/message/${messageId}`)
+        .then(res =>{
+        })
+        .catch(err => console.log(err))
+
+        axios.get('/api/message')
+        .then(data => {
+            let message = data.data
+            setMessageRender(message.length)
+        })
+    }
+
+
     return (
         <div className="messageView">
             <div className="messageView__defualt">
@@ -13,7 +73,7 @@ function MessageView() {
                 <p>Choose one from your existing messages, or start a new one.</p>
                 <Button className="messageView__btn">new message</Button>
             </div>
-            <div className="messageView">
+            <div className="messageView__header">
                 <div className="posts__avatar">
                     <Avatar src={'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png'} />
                 </div>
@@ -24,19 +84,41 @@ function MessageView() {
                         <span className="span">@abdi__123 </span>
                         
                     </div>
-                    <div className="posts__description">
-                        <span> {"text"} </span>
-                    </div>
                 </div>
             </div>
+            <div className="messageView__body">  
+                {message.map(text=>(
+                    <div className={`messageView__content ${user.username === text.name && "message__reciever" }`}>
+                        <div className="message__header__container">
+                            <div className="messageView__content__avatar">
+                                <Avatar src={'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png'} />
+                            </div>
+                            <div className="messageView__content__body">
+                                <div className="content__bodyText">
+                                    <h3> {text.name} </h3>
+                                    <p> {text.message} </p>
+                                </div>
+                                {user.username === text.name ?
+                                    <DeleteOutline className="content__delete" onClick={(e) => deleteMessageHandler(e, text._id)} />
+                                    : null
+                                }
+                                <h4 className="content__timestamp"> {new Date().toUTCString()} </h4>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            
             <div className="messageView__form">
                 <CropOriginal className="icons" />
                 <GifOutlined className="icons" />
-                <form>
-                    <input type="text" placeholder="Start a new message" />
-                    <InsertEmoticon />
+                <form onSubmit={onSubmitHandler}>
+                    <div className="messageView__form__input">
+                        <input type="text" placeholder="Start a new message" value={messageText} onChange={(e)=> setMessageText(e.target.value)} />
+                        <InsertEmoticon />
+                    </div>
+                    <button type="submit"><Send className="icons icon__send" /> </button>
                 </form>
-                <Send className="icons icon__send" />
             </div>
         </div>
     )

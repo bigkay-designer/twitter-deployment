@@ -11,15 +11,28 @@ const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const Pusher = require('pusher')
 const app = express();
 
 let postRoute = require('./routes/serverPost')
 let userRoute = require('./routes/users')
+let messageRoute =  require('./routes/message')
 
 let user = require('./models/user');
+let message = require ('./models/message')
 
 
 let uri = process.env.ATLAS_TWITTER;
+
+
+const pusher = new Pusher({
+  appId: "1119638",
+  key: "f9ff0c0b6cf24f35ed0d",
+  secret: "c20409e8ad0ae2d7c1b9",
+  cluster: "eu",
+  useTLS: true
+});
+
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -27,8 +40,28 @@ mongoose.connect(uri, {
     useCreateIndex: true,
     useFindAndModify: false
 })
-.then(()=> log('Connected to the DataBase'))
-.catch(err => log(`error ${err}`))
+// .then(()=> log('Connected to the DataBase'))
+// .catch(err => log(`error ${err}`))
+
+const db  = mongoose.connection
+
+db.once("open", ()=>{
+  console.log('DB Connected')
+  const msgCollection = db.collection('messages')
+  const changeStream = msgCollection.watch()
+  changeStream.on("change", (change)=>{
+    console.log(change)
+    if(change.operationType === "insert"){
+      const messageDetails = change.fullDocument;
+      pusher.trigger('messages', 'inserted', {
+        name: messageDetails.name,
+        message: messageDetails.message
+      });
+    }else{
+      console.log("pusher trigger error")
+    }
+  })
+})
 
 // Middleware
 app.use(fileUpload())
@@ -47,31 +80,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 // require("./passportConfig")(passport);
 
+
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
  });
 
-
-//  app.post('/api/upload', (req, res)=>{
-//   if (req.files === null) {
-//     return res.status(400).json({ msg: 'No file uploaded' });
-//   }
-
-//   const file = req.files.file;
-
-//   file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).send(err);
-//     }
-//     return res.send({ fileName: file.name, filePath: `/uploads/${file.name}` });
-//   })
-//  })
-
 // using routes
 app.use("/api/post", postRoute)
 app.use("/api", userRoute)
+app.use("/api", messageRoute)
 
 app.get('*', (req, res)=>{
     res.send('404 wrong page')
