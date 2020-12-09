@@ -10,14 +10,14 @@ function MessagePost() {
             </div>
             <div className="posts__header">
                 <div className="posts__headerText">
-                    <h3> abdi </h3>
+                    <h3> group </h3>
                     <span className={`"posts__verified--none" }`}> <VerifiedUserIcon className="posts__verified" /> </span>  
-                    <span className="span">@abdi__123 </span>
+                    <span className="span">@squaaad </span>
                     
                 </div>
-                <div className="posts__description">
+                {/* <div className="posts__description">
                     <span> {"text"} </span>
-                </div>
+                </div> */}
             </div>
         </div>
     )

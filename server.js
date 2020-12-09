@@ -40,7 +40,24 @@ mongoose.connect(uri, {
     useCreateIndex: true,
     useFindAndModify: false
 })
-// .then(()=> log('Connected to the DataBase'))
+// .then(()=> {
+//   console.log('DB Connected')
+//   const msgCollection = db.collection('messages')
+//   const changeStream = msgCollection.watch()
+//   changeStream.on("change", (change, error)=>{
+//     if(change.operationType === "insert"){
+//       const messageDetails = change.fullDocument;
+//       pusher.trigger('messages', 'inserted', {
+//         id:messageDetails._id, 
+//         name: messageDetails.name,
+//         message: messageDetails.message,
+//         time: messageDetails.time
+//       });
+//     }else{
+//       console.log(error)
+//     }
+//   })
+// })
 // .catch(err => log(`error ${err}`))
 
 const db  = mongoose.connection
@@ -49,16 +66,17 @@ db.once("open", ()=>{
   console.log('DB Connected')
   const msgCollection = db.collection('messages')
   const changeStream = msgCollection.watch()
-  changeStream.on("change", (change)=>{
-    console.log(change)
+  changeStream.on("change", (change, err)=>{
     if(change.operationType === "insert"){
       const messageDetails = change.fullDocument;
       pusher.trigger('messages', 'inserted', {
+        _id:messageDetails._id, 
         name: messageDetails.name,
-        message: messageDetails.message
+        message: messageDetails.message,
+        time: messageDetails.time
       });
-    }else{
-      console.log("pusher trigger error")
+    }else if (change.operationType === "delete"){
+      pusher.trigger("messages", "deleted", change.documentKey._id)
     }
   })
 })

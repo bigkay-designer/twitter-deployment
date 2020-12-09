@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import Pusher from 'pusher-js'
 import axios from '../../axios'
 import {Button} from '@material-ui/core'
 import { Avatar } from '@material-ui/core';
@@ -9,7 +10,7 @@ import './css/messagesView.css'
 function MessageView() {
     const [message, setMessage] = useState([])
     const [messageText, setMessageText] = useState('')
-    const [messageRender, setMessageRender] = useState()
+    const [removeMessage, setRemoveMessage] = useState(true)
     const [user, setUser] = useState({token: undefined, user: undefined})
 
     useEffect(()=>{
@@ -17,9 +18,26 @@ function MessageView() {
         .then(data=>{
             let newMessage = data.data
             setMessage(newMessage)
-            setMessageRender(newMessage.length)
         })
-    }, [])
+    }, [removeMessage])
+
+    useEffect(()=>{
+        const pusher = new Pusher('f9ff0c0b6cf24f35ed0d', {
+          cluster: 'eu'
+        });
+    
+        const channel = pusher.subscribe('messages');
+        channel.bind('inserted', function(data) {
+          setMessage([...message, data])
+        });
+        channel.bind('deleted', removeMessage)
+
+        return () =>{
+            channel.unbind_all()
+            channel.unsubscribe()
+        }
+      }, [message])
+
     useEffect(()=>{
         axios.get('/api', {headers: {"auth-token": localStorage.getItem("token")}
         })
@@ -46,13 +64,13 @@ function MessageView() {
         axios.get('/api/message')
         .then(data => {
             let message = data.data
-            setMessageRender(message.length)
         })
 
         setMessageText('')
     }
 
     const deleteMessageHandler = (e, messageId) =>{
+        setRemoveMessage(message.filter(el => el.id !== messageId))
         axios.delete(`/api/message/${messageId}`)
         .then(res =>{
         })
@@ -61,7 +79,6 @@ function MessageView() {
         axios.get('/api/message')
         .then(data => {
             let message = data.data
-            setMessageRender(message.length)
         })
     }
 
@@ -79,9 +96,9 @@ function MessageView() {
                 </div>
                 <div className="posts__header">
                     <div className="posts__headerText">
-                        <h3> abdi </h3>
+                        <h3> group </h3>
                         <span className={`"posts__verified--none" }`}> <VerifiedUserIcon className="posts__verified" /> </span>  
-                        <span className="span">@abdi__123 </span>
+                        <span className="span">@squaaad </span>
                         
                     </div>
                 </div>
@@ -95,6 +112,7 @@ function MessageView() {
                             </div>
                             <div className="messageView__content__body">
                                 <div className="content__bodyText">
+                                    
                                     <h3> {text.name} </h3>
                                     <p> {text.message} </p>
                                 </div>

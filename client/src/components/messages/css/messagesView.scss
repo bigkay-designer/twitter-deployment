@@ -80,7 +80,7 @@
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    height: 85vh;
+    height: 80vh;
     padding-bottom: 20px;
     margin: 10px 0;
   }
@@ -88,7 +88,7 @@
     .message__header__container {
       display: flex;
       align-items: flex-start;
-      margin: 30px 0;
+      margin: 0px 0 20px;
       padding: 0 10px;
       max-width: 350px;
       .messageView__content__body {
@@ -131,7 +131,6 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-    margin: -30px 0 !important;
     .content__bodyText {
       background-color: var(--twitter-color) !important;
       color: #fff;

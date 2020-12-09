@@ -1,5 +1,7 @@
 const express =  require ('express')
 const router = express.Router();
+const Pusher = require('pusher')
+
 
 let message = require('../models/message')
 const auth = require("../middleware/auth");
