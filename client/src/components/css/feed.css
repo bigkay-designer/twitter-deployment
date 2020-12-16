@@ -159,6 +159,14 @@
 
 .feed .feed__container .feed__tweet .feed__tweet__attachment input {
   display: none;
+  padding: 4px 7px;
+  width: 100%;
+  border-radius: 12px;
+  outline: none;
+}
+
+.feed .feed__container .feed__tweet .feed__tweet__attachment .feed__tweet__input--show {
+  display: inline;
 }
 
 .feed .feed__container .feed__tweet .feed__tweet__attachment .tweet__attachment__icon {

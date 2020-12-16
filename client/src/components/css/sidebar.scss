@@ -15,7 +15,6 @@
         font-weight: 800;
         margin-right: 20px;
       }
-
       .showSidebar__icons {
         padding: 20px;
         transform: scale(1.2);
@@ -26,6 +25,10 @@
         border-radius: 30px;
       }
     }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
     .sidebar__twitter {
       color: var(--twitter-color);
       padding: 0 20px 0;
@@ -33,6 +36,11 @@
 
     .showSidebar__active {
       color: var(--twitter-color);
+    }
+    .showSidebar__notAvailable {
+      cursor: not-allowed;
+      text-decoration: line-through;
+      color: grey;
     }
 
     .sidebar__btn {

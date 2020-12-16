@@ -38,12 +38,12 @@ function Sidebar() {
             <div className="sidebar__container">
                 <Twitter className="sidebar__twitter" />
                 <Link to="/home"> <ShowSidebar active text="home" Icons={HomeOutlined} /> </Link>
-                <ShowSidebar  text="explore" Icons={Search} />
-                <ShowSidebar text="notifications" Icons={Notifications} />
+                <ShowSidebar notAvailable  text="explore" Icons={Search} />
+                <ShowSidebar notAvailable text="notifications" Icons={Notifications} />
 
                 <Link to="/messages"> <ShowSidebar text="messages" Icons={MailOutline} /> </Link>
-                <ShowSidebar displayNone text="profile" Icons={PersonOutline} />
-                <ShowSidebar displayNone text="more" Icons={MoreHorizRounded} />
+                <ShowSidebar notAvailable displayNone text="profile" Icons={PersonOutline} />
+                <ShowSidebar notAvailable displayNone text="more" Icons={MoreHorizRounded} />
                 <Button variant="outlined" fullWidth className="sidebar__btn">Tweet</Button>
                 <div className="sidebar__user">
                     <h3> {name} </h3>

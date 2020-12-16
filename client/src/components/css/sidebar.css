@@ -39,6 +39,11 @@
   border-radius: 30px;
 }
 
+.sidebar .sidebar__container a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .sidebar .sidebar__container .sidebar__twitter {
   color: var(--twitter-color);
   padding: 0 20px 0;
@@ -46,6 +51,12 @@
 
 .sidebar .sidebar__container .showSidebar__active {
   color: var(--twitter-color);
+}
+
+.sidebar .sidebar__container .showSidebar__notAvailable {
+  cursor: not-allowed;
+  text-decoration: line-through;
+  color: grey;
 }
 
 .sidebar .sidebar__container .sidebar__btn {

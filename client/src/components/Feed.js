@@ -14,11 +14,13 @@ function Feed() {
     const [user, setUser] = useState({token: undefined, user: undefined})
     const [tweetText, setTweetText] = useState('')
     const [tweetImage, setTweetImage] = useState('')
+    const [linkTweetImage, setLinkTweetImage] = useState('')
+    const [showLinkBox, setShowLinkBox] = useState(false)
     const [loggedout, setLoggedOut] = useState(false)
     const [tweetBox, setTweetBox] = useState(false)
-    const [file, setFile] = useState('')
-    const [fileName, setFileName] = useState('choose file')
-    const [uploadedFile, setUploadedFile] = useState({myFileName: '', filePath: ''})
+    // const [file, setFile] = useState('')
+    // const [fileName, setFileName] = useState('choose file')
+    // const [uploadedFile, setUploadedFile] = useState({myFileName: '', filePath: ''})
 
 
     useEffect(()=>{
@@ -59,9 +61,10 @@ function Feed() {
     const selectFileHandler = (e) =>{
         setTweetImage(URL.createObjectURL(e.target.files[0]))
         let handlerFile = e.target.files[0]
-        setFile(handlerFile)
+        // setFile(handlerFile)
         console.log(handlerFile)
     }
+
 
     const tweetTextHandler = (e)=>{
         setTweetText(e.target.value)
@@ -93,7 +96,7 @@ function Feed() {
             displayName: user.name,
             username: user.username,
             text: tweetText,
-            image: tweetImage,
+            image: linkTweetImage,
             avatar: 'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png',
             author: {
                 id: user.id,
@@ -114,6 +117,8 @@ function Feed() {
         .catch(err => console.log(`error ${err}`))
         setTweetImage('')
         setTweetText('')
+        setLinkTweetImage('')
+        setShowLinkBox(false)
         setTweetBox(false)
     }
    
@@ -166,8 +171,8 @@ function Feed() {
                              </div> : null 
                         }
                         <div className="feed__tweet__attachment">
-                            <label htmlFor="file"><CropOriginal className="tweet__attachment__icon" /> </label>
-                            <input type="file" id="file" onChange={selectFileHandler} />
+                            <input className={`feed__tweet__input  ${showLinkBox && "feed__tweet__input--show"}`} type="text" id="file" placeholder="paste the URL here" onChange={(e)=> setLinkTweetImage(e.target.value)} value={linkTweetImage} />
+                            <label htmlFor="file" onClick={() => setShowLinkBox(true)}><CropOriginal className="tweet__attachment__icon" /> </label>
 
                             <GifOutlined className="tweet__attachment__icon gif" />
                             <InsertEmoticon className="tweet__attachment__icon" />
