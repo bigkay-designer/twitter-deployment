@@ -114,9 +114,7 @@
 }
 
 .messageView .messageView__body {
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
+  width: 100%;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -201,11 +199,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   width: 100%;
-  padding: 5px 0;
+  padding: 15px 0;
 }
 
 .messageView .messageView__form .icons {
@@ -271,6 +266,14 @@
   }
   .messageView .posts__body .posts__header {
     width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .messageView {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 /*# sourceMappingURL=messagesView.css.map */

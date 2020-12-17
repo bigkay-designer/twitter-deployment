@@ -75,7 +75,7 @@
     grid-area: sidebar;
     padding: 0 !important;
     .sidebar__container {
-      position: fixed;
+      position: sticky;
       bottom: 0;
       z-index: 100;
       background-color: rgb(25, 28, 31);
@@ -84,6 +84,7 @@
       align-items: center;
       width: 100%;
       padding: 0;
+
       .sidebar__twitter,
       .sidebar__btn,
       .display__none {

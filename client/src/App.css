@@ -75,4 +75,15 @@ body {
       "sidebar feed ."
       ". widget .";
   }
+  .messages {
+    width: 100% !important;
+    grid-template-columns: 10% 40% 50%;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .messages {
+    width: 95% !important;
+    grid-template-columns: 30% 70%;
+  }
 }

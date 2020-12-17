@@ -1,5 +1,9 @@
 .messageView {
   position: relative;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: flex-start;
   .messageView__defualt {
     display: none;
     flex-direction: column;
@@ -76,7 +80,7 @@
   }
 
   .messageView__body {
-    min-width: fit-content;
+    width: 100%;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -143,11 +147,11 @@
     display: grid;
     grid-template-columns: 10% 10% 80%;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    // position: absolute;
+    // bottom: 0;
+    // right: 0;
     width: 100%;
-    padding: 5px 0;
+    padding: 15px 0;
     .icons {
       color: var(--twitter-color);
       padding-left: 10px;
@@ -199,5 +203,11 @@
         width: 100% !important;
       }
     }
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .messageView {
+    width: fit-content;
   }
 }

@@ -18,13 +18,15 @@
   width: 420px;
 }
 
-.messagePosts .posts__header .posts__headerText {
+.messagePosts .posts__header .posts__headerText a {
+  text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  color: inherit;
 }
 
 .messagePosts .posts__header .posts__headerText h3 {
@@ -73,6 +75,12 @@
 
 .messagePosts .heartRed {
   color: red !important;
+}
+
+@media screen and (max-width: 720px) {
+  .messagePosts {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 450px) {

@@ -5,6 +5,7 @@ import Landing from './components/Landing'
 import Signup from './components/authentication/Signup'
 import Login from './components/authentication/Login'
 import Messages from './components/messages/Message'
+import MessageViewSmall from './components/messages/MessageViewSmall'
 import axios from './axios'
 
 
@@ -16,6 +17,7 @@ function App() {
         {/* <FileUpload /> */}
       <div className="app">
         <Switch>
+          <Route path="/messages/view" component={MessageViewSmall} />
           <Route path="/messages" component={Messages} />
           <Route path="/home" component={Home} />
           <Route path="/login" component={Login} />

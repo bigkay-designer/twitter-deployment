@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import { Avatar } from '@material-ui/core';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import './css/messagePost.css'
@@ -10,10 +11,11 @@ function MessagePost() {
             </div>
             <div className="posts__header">
                 <div className="posts__headerText">
-                    <h3> group </h3>
-                    <span className={`"posts__verified--none" }`}> <VerifiedUserIcon className="posts__verified" /> </span>  
-                    <span className="span">@squaaad </span>
-                    
+                    <Link to="/messages/view">
+                        <h3> group </h3>
+                        <span className={`"posts__verified--none" }`}> <VerifiedUserIcon className="posts__verified" /> </span>  
+                        <span className="span">@squaaad </span>
+                    </Link>
                 </div>
                 {/* <div className="posts__description">
                     <span> {"text"} </span>

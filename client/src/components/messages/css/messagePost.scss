@@ -10,8 +10,12 @@
   .posts__header {
     width: 420px;
     .posts__headerText {
-      display: flex;
-      align-items: flex-start;
+      a {
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        color: inherit;
+      }
       h3 {
         text-transform: capitalize;
         font-size: 18px;
@@ -51,6 +55,11 @@
 }
 
 // media queries
+@media screen and (max-width: 720px) {
+  .messagePosts {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 450px) {
   .posts {

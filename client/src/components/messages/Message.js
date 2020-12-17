@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from '../Sidebar'
-import sideBar from '../Sidebar' 
 import MessageFeed from './MessageFeed'
 import MessageView from './MessageView'
 import '../../App.css'
