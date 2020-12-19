@@ -17,7 +17,7 @@ function Landing() {
 
     // useEffect(() => {
     //     setTimeout(() => {
-            setLandingPopup(false)
+            // setLandingPopup(false)
     //     }, 1000);
 
     // }, [])
