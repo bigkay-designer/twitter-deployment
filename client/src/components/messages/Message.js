@@ -5,9 +5,9 @@ import MessageView from './MessageView'
 import '../../App.css'
 function Message() {
     return (
-        <div className="messages App">
+        <div className="messages">
             {/* nav */}
-            <Sidebar />
+            <Sidebar className="messages__sidebar" />
             {/* message */}
             <MessageFeed/>
             {/* view messages */}

@@ -1,5 +1,10 @@
 .messageView {
-  position: relative;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3;
+          flex: 0.3;
 }
 
 .messageView .messageView__defualt {
@@ -257,23 +262,5 @@
 .messageView .messageView__form form button {
   border: none;
   background-color: #fff;
-}
-
-@media screen and (max-width: 450px) {
-  .messageView .posts {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  .messageView .posts__body .posts__header {
-    width: 100% !important;
-  }
-}
-
-@media screen and (max-width: 815px) {
-  .messageView {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-  }
 }
 /*# sourceMappingURL=messagesView.css.map */

@@ -33,7 +33,7 @@ function Sidebar() {
        setLoggedOut(true)
     }
     return (
-        <div className="sidebar">
+        <div className="sidebar messages__sidebar">
             {loggedout ? <Redirect to='/' /> : null }
             <div className="sidebar__container">
                 <Twitter className="sidebar__twitter" />

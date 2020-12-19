@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Avatar } from '@material-ui/core';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import {ChatBubbleOutline,Favorite,FavoriteBorder, DeleteOutline , Repeat} from '@material-ui/icons'
 import './css/posts.css'
 function Posts( {displayName,username,verified,text,image,avatar, keys, deletePost, currentuser}) {
     
-    const [likePost, setLikePost] = useState([])
     const [isPostLiked, setIsPostLiked] = useState(false)
     const [postLikes, setPostLikes] = useState('')
 

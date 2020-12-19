@@ -10,7 +10,7 @@ router.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
     // validate
-    const user = await User.findOne({ username: username });
+    const user = await User.findOne({ username:{$regex: new RegExp(req.body.username, 'i') }});
     if (!user)
     return res.status(400).json({ msg: "No account with this username has been registered." });
     const isMatch = await bcrypt.compare(password, user.password);

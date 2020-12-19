@@ -1,3 +1,11 @@
+.widget {
+  -webkit-box-flex: 0.3;
+      -ms-flex: 0.3 1;
+          flex: 0.3 1;
+  display: none;
+  margin-left: 30px;
+}
+
 .widget .input {
   background-color: #e1e8eb;
   display: -webkit-box;
@@ -40,21 +48,9 @@
   font-weight: 800;
 }
 
-@media screen and (max-width: 1060px) {
+@media screen and (min-width: 560px) {
   .widget {
-    grid-area: widget;
-    padding: 0 !important;
-    margin-bottom: 30px;
-  }
-  .widget .input {
-    padding: 10px 0 !important;
-    margin: 20px 0 !important;
-  }
-  .widget h2 {
-    margin: 30px 0 0 !important;
-  }
-  .widget .widget__twitter__embed {
-    display: none;
+    display: block;
   }
 }
 /*# sourceMappingURL=widget.css.map */

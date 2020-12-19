@@ -58,12 +58,12 @@ function Feed() {
 
     }
 
-    const selectFileHandler = (e) =>{
-        setTweetImage(URL.createObjectURL(e.target.files[0]))
-        let handlerFile = e.target.files[0]
-        // setFile(handlerFile)
-        console.log(handlerFile)
-    }
+    // const selectFileHandler = (e) =>{
+    //     setTweetImage(URL.createObjectURL(e.target.files[0]))
+    //     let handlerFile = e.target.files[0]
+    //     // setFile(handlerFile)
+    //     console.log(handlerFile)
+    // }
 
 
     const tweetTextHandler = (e)=>{

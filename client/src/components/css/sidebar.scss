@@ -1,128 +1,150 @@
 .sidebar {
-  margin-top: 10px;
-  padding: 0 10px 0 10px;
+  padding: 0 !important;
+  margin-top: 20px;
+  position: relative;
   .sidebar__container {
-    padding: 20px;
-    margin-right: 30px;
+    padding: 15px 10px;
+    .sidebar__twitter,
+    .sidebar__btn,
+    .display__none {
+      display: none !important;
+    }
     .showSidebar {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      cursor: pointer;
-      h3 {
-        font-size: 18px;
-        text-transform: capitalize;
-        font-weight: 800;
-        margin-right: 20px;
-      }
+      color: ivory;
+      margin: 0 !important;
       .showSidebar__icons {
-        padding: 20px;
-        transform: scale(1.2);
+        font-size: 30px;
       }
-
-      &:hover {
-        background-color: var(--twitter-bg);
-        border-radius: 30px;
+      h3 {
+        display: none;
       }
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .sidebar__twitter {
-      color: var(--twitter-color);
-      padding: 0 20px 0;
-    }
-
-    .showSidebar__active {
-      color: var(--twitter-color);
-    }
-    .showSidebar__notAvailable {
-      cursor: not-allowed;
-      text-decoration: line-through;
-      color: grey;
-    }
-
-    .sidebar__btn {
-      margin-top: 30px;
-      background-color: var(--twitter-color) !important;
-      border-radius: 30px;
-      color: #fff !important;
-      border: none !important;
-      font-weight: 900;
     }
     .sidebar__user {
-      margin-top: 30px;
-      h3 {
-        text-transform: capitalize;
-        font-weight: 900;
-        cursor: pointer;
-      }
-      .sidebar__user__btn {
-        margin-top: 10px;
-        background-color: rgb(235, 95, 95);
-        border-radius: 30px;
-        color: #fff !important;
-        border: none !important;
-        font-weight: 800;
-      }
+      display: none;
     }
   }
 }
-
 @media screen and (max-width: 560px) {
   .sidebar {
-    grid-area: sidebar;
-    padding: 0 !important;
     .sidebar__container {
-      position: sticky;
+      position: fixed;
       bottom: 0;
+      right: 0;
+      width: 100%;
       z-index: 100;
       background-color: rgb(25, 28, 31);
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
-      width: 100%;
-      padding: 0;
-
+    }
+  }
+}
+@media screen and (min-width: 560px) {
+  .sidebar {
+    margin-top: 10px;
+    padding: 0 10px 0 10px;
+    flex: 0.3 1;
+    .sidebar__container {
+      background-color: inherit !important;
+      min-width: fit-content;
+      padding: 20px;
+      margin-right: 30px;
       .sidebar__twitter,
       .sidebar__btn,
       .display__none {
-        display: none !important;
+        display: block !important;
       }
       .showSidebar {
-        color: ivory;
-        margin: 0 !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        color: #000;
         h3 {
-          display: none;
+          font-size: 18px;
+          text-transform: capitalize;
+          font-weight: 800;
+          margin-right: 20px;
+        }
+        .showSidebar__icons {
+          padding: 20px;
+          transform: scale(1.2);
+        }
+
+        &:hover {
+          background-color: var(--twitter-bg);
+          border-radius: 30px;
         }
       }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .sidebar__twitter {
+        color: var(--twitter-color);
+        padding: 0 20px 0;
+      }
+
+      .showSidebar__active {
+        color: var(--twitter-color);
+      }
+      .showSidebar__notAvailable {
+        cursor: not-allowed;
+        text-decoration: line-through;
+        color: grey;
+      }
+
+      .sidebar__btn {
+        margin-top: 30px;
+        background-color: var(--twitter-color) !important;
+        border-radius: 30px;
+        color: #fff !important;
+        border: none !important;
+        font-weight: 900;
+        width: 100% !important;
+      }
       .sidebar__user {
-        display: none;
+        margin-top: 30px;
+        display: inline-block;
+        h3 {
+          text-transform: capitalize;
+          font-weight: 900;
+          cursor: pointer;
+        }
+        .sidebar__user__btn {
+          margin-top: 10px;
+          background-color: rgb(235, 95, 95);
+          border-radius: 30px;
+          color: #fff !important;
+          border: none !important;
+          font-weight: 800;
+        }
       }
     }
   }
 }
 
-@media screen and (max-width: 1060px) {
-  .sidebar {
-    padding: 0 !important;
-    .sidebar__container {
-      padding: 0 !important;
-    }
-    .showSidebar {
-      h3 {
-        display: none !important;
-      }
-    }
-    .sidebar__btn {
-      display: none !important;
-    }
-    .sidebar__user {
-      button {
-        display: none;
-      }
-      padding: 0 10px;
-    }
-  }
-}
+// @media screen and (max-width: 1060px) {
+//   .sidebar {
+//     padding: 0 !important;
+//     .sidebar__container {
+//       padding: 0 !important;
+//     }
+//     .showSidebar {
+//       h3 {
+//         display: none !important;
+//       }
+//     }
+//     .sidebar__btn {
+//       display: none !important;
+//     }
+//     .sidebar__user {
+//       button {
+//         display: none;
+//       }
+//       padding: 0 10px;
+//     }
+//   }
+// }
+
+// *************************************************

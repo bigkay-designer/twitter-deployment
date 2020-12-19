@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchIcon from '@material-ui/icons/Search';
-import { Avatar } from '@material-ui/core';
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+// import { Avatar } from '@material-ui/core';
+// import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import MessagePost from './MessagePost'
 import './css/messagesFeed.css'
 function MessageFeed() {

@@ -1,4 +1,6 @@
 .messageFeed {
+  flex: 1;
+  display: none;
   border: 1px solid var(--twitter-borderBottom);
   .messageFeed__title {
     text-align: center;
@@ -29,5 +31,14 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+// media queries
+
+@media screen and (min-width: 560px) {
+  .messageFeed {
+    flex: 0.6;
+    display: block;
   }
 }

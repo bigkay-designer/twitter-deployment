@@ -6,26 +6,26 @@ import './css/widget.css'
 function Widget() {
     return (
         <div className="widget">
-            <div className="input">
+            <div className="input  widget__twitter__embed">
                 <SearchIcon className="widget__input--icon" />
                 <input type="text" placeholder="Search Twitter" />
             </div>
-            <h2>What's happening</h2>
-            <TwitterTimelineEmbed 
-                sourceType="profile"
-                screenName="hannaay__"
-                options={{height: 400}}
-            />
             <div className="widget__twitter__embed">
-            
-            <TwitterTweetEmbed
-                tweetId={'1321479550002450434'}
-            />
+                <h2>What's happening</h2>
+                <TwitterTimelineEmbed 
+                    sourceType="profile"
+                    screenName="hannaay__"
+                    options={{height: 400}}
+                />
+                
+                <TwitterTweetEmbed
+                    tweetId={'1321479550002450434'}
+                />
+                <TwitterShareButton 
+                    url={"https://twitter.com/bigkayyy_"}
+                    options={{text: 'react is awesome', via: 'hannaay__'}}
+                />
             </div>
-            <TwitterShareButton 
-                url={"https://twitter.com/bigkayyy_"}
-                options={{text: 'react is awesome', via: 'hannaay__'}}
-            />
         </div>
     )
 }

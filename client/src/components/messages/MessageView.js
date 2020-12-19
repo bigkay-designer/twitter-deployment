@@ -63,9 +63,8 @@ function MessageView() {
         
         axios.get('/api/message')
         .then(data => {
-            let message = data.data
+            // let message = data.data
         })
-
         setMessageText('')
     }
 
@@ -78,7 +77,7 @@ function MessageView() {
 
         axios.get('/api/message')
         .then(data => {
-            let message = data.data
+            // let message = data.data
         })
     }
 
