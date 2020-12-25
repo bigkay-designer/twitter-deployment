@@ -82,7 +82,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     height: 80vh;
-    padding-bottom: 20px;
+    padding-bottom: 100px;
     margin: 10px 0;
   }
   .messageView__content {
@@ -191,8 +191,11 @@
 }
 
 // media query
-// @media screen and (max-width: 560px) {
-//   .messageView {
-//     margin-bottom: 70px;
-//   }
-// }
+@media screen and (max-width: 560px) {
+  .messageView {
+    margin-bottom: 70px;
+    .messageView__form {
+      display: none;
+    }
+  }
+}

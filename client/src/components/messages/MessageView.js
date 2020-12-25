@@ -3,7 +3,7 @@ import Pusher from 'pusher-js'
 import axios from '../../axios'
 import {Button} from '@material-ui/core'
 import { Avatar } from '@material-ui/core';
-import {CropOriginal, InsertEmoticon, GifOutlined, Send, DeleteOutline} from '@material-ui/icons';
+import { CropOriginal, InsertEmoticon, GifOutlined, Send, DeleteOutline} from '@material-ui/icons';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 import './css/messagesView.css'
@@ -12,6 +12,8 @@ function MessageView() {
     const [messageText, setMessageText] = useState('')
     const [removeMessage, setRemoveMessage] = useState(true)
     const [user, setUser] = useState({token: undefined, user: undefined})
+    const [formNone, setFormNone] = useState(true)
+
 
     useEffect(()=>{
         axios.get('/api/message')
@@ -19,6 +21,7 @@ function MessageView() {
             let newMessage = data.data
             setMessage(newMessage)
         })
+
     }, [removeMessage])
 
     useEffect(()=>{
@@ -80,8 +83,7 @@ function MessageView() {
             // let message = data.data
         })
     }
-
-
+    
     return (
         <div className="messageView">
             <div className="messageView__defualt">
@@ -125,7 +127,8 @@ function MessageView() {
                     </div>
                 ))}
             </div>
-            
+
+
             <div className="messageView__form">
                 <CropOriginal className="icons" />
                 <GifOutlined className="icons" />

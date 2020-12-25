@@ -20,7 +20,7 @@ body {
 
 .messages {
   display: flex;
-  height: 100%;
+  height: 100vh;
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;

@@ -5,7 +5,11 @@
 }
 
 .sidebar .sidebar__container {
-  padding: 15px 10px;
+  padding: 0px 0px 10px;
+}
+
+.sidebar .sidebar__container .messageView__form {
+  display: none;
 }
 
 .sidebar .sidebar__container .sidebar__twitter,
@@ -39,6 +43,72 @@
     width: 100%;
     z-index: 100;
     background-color: #191c1f;
+  }
+  .sidebar .sidebar__container .messageView__form {
+    border: 1px solid var(--twitter-borderBottom);
+    background-color: #fff;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 10% 10% 80%;
+        grid-template-columns: 10% 10% 80%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    margin-bottom: 10px;
+  }
+  .sidebar .sidebar__container .messageView__form .icons {
+    color: var(--twitter-color);
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  .sidebar .sidebar__container .messageView__form form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .sidebar .sidebar__container .messageView__form form .messageView__form__input {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 75%;
+    background-color: #e1e8eb;
+    border: none;
+    border-radius: 20px;
+    margin: 10px 0 5px;
+    padding: 10px 15px;
+  }
+  .sidebar .sidebar__container .messageView__form form input {
+    border: none;
+    background-color: #e1e8eb;
+    font-size: 16px;
+    outline: none;
+    color: #18191a;
+    width: 220px;
+    padding: 7px 0;
+  }
+  .sidebar .sidebar__container .messageView__form form .messagesFeed__searchIcon {
+    color: gray;
+    cursor: pointer;
+  }
+  .sidebar .sidebar__container .messageView__form form button {
+    border: none;
+    background-color: #fff;
+  }
+  .sidebar .sidebar__container .sidebar__icons {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -48,6 +118,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    padding-top: 10px;
   }
 }
 

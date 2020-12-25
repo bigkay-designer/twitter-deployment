@@ -124,7 +124,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 80vh;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   margin: 10px 0;
 }
 
@@ -262,5 +262,14 @@
 .messageView .messageView__form form button {
   border: none;
   background-color: #fff;
+}
+
+@media screen and (max-width: 560px) {
+  .messageView {
+    margin-bottom: 70px;
+  }
+  .messageView .messageView__form {
+    display: none;
+  }
 }
 /*# sourceMappingURL=messagesView.css.map */
