@@ -172,13 +172,15 @@
   background-color: var(--twitter-bg);
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 560px) {
   .landing {
+    overflow: hidden !important;
+  }
+  .landing .landing__container {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
-    overflow: hidden !important;
   }
   .landing .landing__main {
     display: none;
@@ -209,8 +211,9 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    width: 80%;
+    width: 100%;
     margin: 90px 55px auto auto;
+    padding: 0 10px;
   }
 }
 

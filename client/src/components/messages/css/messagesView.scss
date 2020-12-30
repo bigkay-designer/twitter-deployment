@@ -78,10 +78,6 @@
 
   .messageView__body {
     width: 100%;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: 80vh;
     margin: 10px 0;
   }
   .messageView__content {
@@ -193,11 +189,28 @@
 @media screen and (max-width: 560px) {
   .messageView {
     margin-bottom: 70px;
+    .messageView__body__container{
+      width: 90%;
+      transform: scale(0.9);
+    }
     .messageView__body {
+      height: 100%;
       padding-bottom: 100px;
     }
     .messageView__form {
       display: none;
+    }
+  }
+}
+
+@media screen and (min-width:560px){
+  .messageView{
+    .messageView__body{
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: 83vh;
     }
   }
 }

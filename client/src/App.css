@@ -4,6 +4,7 @@
 }
 
 body {
+  overflow-x: hidden ;
   --twitter-color: rgba(29, 161, 242, 1);
   --twitter-bg: rgba(155, 216, 253, 0.4);
   --twitter-borderBottom: rgb(225, 232, 235);
@@ -46,8 +47,8 @@ body {
   font-weight: 900;
 }
 
-/* @media screen and (max-width: 560px) { */
-/* .messages {
-    display: block;
+@media screen and (max-width: 560px) { 
+  *{
+    overflow-x: hidden;
   }
-} */
+}

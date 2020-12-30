@@ -104,28 +104,31 @@ function MessageView() {
                     </div>
                 </div>
             </div>
-            <div className="messageView__body">  
-                {message.map(text=>(
-                    <div className={`messageView__content ${user.username === text.name && "message__reciever" }`}>
-                        <div className="message__header__container">
-                            <div className="messageView__content__avatar">
-                                <Avatar src={'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png'} />
-                            </div>
-                            <div className="messageView__content__body">
-                                <div className="content__bodyText">
-                                    
-                                    <h3> {text.name} </h3>
-                                    <p> {text.message} </p>
+            <div className="messageView__body__container">
+                <div className="messageView__body">  
+                    {message.map(text=>(
+                        <div className={`messageView__content ${user.username === text.name && "message__reciever" }`}>
+                            <div className="message__header__container">
+                                <div className="messageView__content__avatar">
+                                    <Avatar src={'https://polightafricafilms.com/wp-content/uploads/2019/07/avatar_afro_guy-512.png'} />
                                 </div>
-                                {user.username === text.name ?
-                                    <DeleteOutline className="content__delete" onClick={(e) => deleteMessageHandler(e, text._id)} />
-                                    : null
-                                }
-                                <h4 className="content__timestamp"> {new Date().toUTCString()} </h4>
+                                <div className="messageView__content__body">
+                                    <div className="content__bodyText">
+                                        
+                                        <h3> {text.name} </h3>
+                                        <p> {text.message} </p>
+                                    </div>
+                                    {user.username === text.name ?
+                                        <DeleteOutline className="content__delete" onClick={(e) => deleteMessageHandler(e, text._id)} />
+                                        : null
+                                    }
+                                    <h4 className="content__timestamp"> {new Date().toUTCString()} </h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
             </div>
 
 
