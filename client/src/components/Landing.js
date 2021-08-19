@@ -12,7 +12,10 @@ function Landing() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [toHome, setToHome] = useState(false)
-    const [errorMessage, setErrorMessage] = useState(false)
+    const [errorMessage, setErrorMessage] = useState({
+        status: false,
+        msg: ''
+    })
     const [landingPopup, setLandingPopup] = useState(false)
 
     // useEffect(() => {
@@ -33,10 +36,11 @@ function Landing() {
             localStorage.setItem("token", res.data.token);
         })
         .catch(err => {
-            setErrorMessage(true)
-            window.setTimeout(()=>{
-                setErrorMessage(false)
-            }, 5000)
+            const errResponse = (err.response.data.msg)
+            setErrorMessage({
+                status: true,
+                msg: errResponse
+            })
         })
 
         setUsername('')
@@ -48,23 +52,25 @@ function Landing() {
         <div className="landing">
             {toHome ? <Redirect to='/home' /> : null }
             <div className={`${landingPopup ? "landing__popup": "landing__popup--none"}`}>
-                <Twitter className="landing__popup__icon" />
+                {/* <Twitter className="landing__popup__icon" /> */}
             </div>
             <div className="landing__container">
                 <div className="landing__main"></div>
                 <div className="landing__aside">
                     <div className="landing__login">
                         <form onSubmit={onSubmitHandler}>
-                            <input type="text" placeholder="username" value={username} onChange={e=> setUsername(e.target.value)} required />
-                            <input type="password" placeholder="password"  value={password} onChange={e=> setPassword(e.target.value)} required />
+                            <div className="form__div email__div">
+                                <input type="text" placeholder="username" value={username} onChange={e=> setUsername(e.target.value)} required />
+                            </div>
+                            <div className="form__div password__div">
+                                <input type="password" placeholder="password"  value={password} onChange={e=> setPassword(e.target.value)} required />
+                            </div>
                             <div className="landing__login__btn">
                                 <Button variant="outlined" fullWidth className="landing__login__btn" type="submit">Log in</Button>
                             </div>
                         </form>
-                        {errorMessage &&
-                                <FlashMessage duration={5000} persistOnHover = {true}>
-                                    <h3 className="error">No account with this username has been found.</h3>
-                                </FlashMessage>
+                        {errorMessage.status &&
+                            <h3 className="error">{errorMessage.msg}</h3>
                         }
                     </div>
                     <div className="landing__twitter">

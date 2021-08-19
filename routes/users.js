@@ -14,7 +14,7 @@ router.post("/login", async (req, res, next) => {
     if (!user)
     return res.status(400).json({ msg: "No account with this username has been registered." });
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
+    if (!isMatch) return res.status(400).json({ msg: "You have entered the wrong password." });
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
     res.header("auth-token", token).send({token,user: {id: user._id,name: user.name, username: user.username}})
     } catch (err) {

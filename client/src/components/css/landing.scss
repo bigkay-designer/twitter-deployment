@@ -1,177 +1,156 @@
-.landing {
-  flex: 100%;
-
-  .landing__container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    height: 100vh;
-  }
-  .landing__popup {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgb(186, 206, 219);
-    background: linear-gradient(
-      90deg,
-      rgb(215, 220, 224) 0%,
-      rgb(227, 241, 252) 100%
-    );
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .landing__popup__icon {
-      font-size: 90px;
-      color: var(--twitter-color);
-    }
-  }
-  .landing__popup--none {
-    display: none;
-  }
-  .landing__main {
-    background: rgb(67, 138, 185);
-    background: linear-gradient(
-      90deg,
-      rgb(59, 145, 216) 0%,
-      rgb(139, 200, 247) 100%
-    );
-  }
-
-  .landing__aside {
-    .landing__login {
-      padding: 20px;
-      form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        input {
-          text-transform: lowercase;
-          padding: 15px;
-          border: none;
-          background-color: #f4f4f4;
-          margin-right: 10px;
-          border-bottom: 1px solid var(--twitter-color);
-          outline: none;
-          &::placeholder {
-            font-size: 16px;
-            text-transform: capitalize;
-          }
-        }
-        input[type="password"] {
-          text-transform: none !important;
-        }
-        .landing__login__btn {
-          background-color: #fff;
-          color: var(--twitter-color);
-          border-radius: 30px;
-          font-weight: 800;
-
-          &:hover {
-            background-color: var(--twitter-bg);
-          }
-        }
-      }
-    }
-
-    .landing__twitter {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      width: 60%;
-      margin: 200px auto auto;
-      .landing__twitter__title {
-        margin-bottom: 50px;
-        max-width: 300px;
-        .landing__twitter--icon {
-          color: var(--twitter-color);
-          font-size: 46px;
-        }
-      }
-      .landing__twitter__join {
-        .landing__join__btn {
-          width: 340px;
-          margin-top: 15px;
-          border-radius: 20px;
-          border: none;
-          font-weight: 800;
-          text-transform: none;
-          text-decoration: none;
-        }
-        .btn1 {
-          background-color: rgb(63, 129, 216);
-          color: #fff;
-          &:hover {
-            background-color: rgb(100, 140, 192);
-          }
-        }
-        .btn2 {
-          border: 1px solid rgb(63, 129, 216);
-          background-color: #fff;
-          color: var(--twitter-color);
-
-          &:hover {
-            background-color: var(--twitter-bg);
-          }
-        }
-      }
-    }
-  }
-}
-
-// media queries
-@media screen and (max-width: 560px) {
-  .landing {
-    .landing__container{
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-    }
-    overflow: hidden !important;
-    .landing__main {
-      display: none;
-    }
-    .landing__aside {
+ .landing{
+   overflow: hidden;
+   .landing__container{
+     .landing__aside {
       .landing__login {
-        padding: 10px;
+        width: 90%;
+        margin: 0 auto;
         form {
-          display: block;
+          width: 100%;
+          .form__div{
+            margin: 20px 0 0;
+            border-bottom: 1px solid var(--twitter-color);
+            width: 100%;
+          }
           input {
-            width: 85%;
-            margin: 10px 0 10px 0;
+            width: 100%;
+            background-color: #f4f4f4;
+            font-size: 16px;
+            padding: 10px;
+            text-transform: lowercase;
+            border: none;
+            outline: none;
+            &::placeholder {
+              font-size: 16px;
+              text-transform: capitalize;
+            }
+          }
+          input[type="password"] {
+            text-transform: none !important;
           }
           .landing__login__btn {
-            border-radius: 0;
-            width: 100px;
-            color: #fff;
-            background-color: #3f81d8;
+            button{
+              width: 120px;
+              background-color: #3f81d8;
+              color: #fff;
+              border-radius: 0px;
+              font-weight: 800;
+              margin-top: 10px;
+              border: none;
+              padding: 10px 0;
+            }
           }
         }
       }
+  
       .landing__twitter {
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        width: 100%;
-        margin: 90px 55px auto auto;
-        padding: 0 10px;
+        flex-direction: column;
+        align-items: center;
+        padding:0 20px;
+        margin: 90px auto 0;
+        .landing__twitter__title {
+          .landing__twitter--icon {
+            color: var(--twitter-color);
+            font-size: 46px;
+          }
+        }
+        .landing__twitter__join {
+          width: 100%;
+          margin: 40px  0 0;
+          .landing__join__btn {
+            width: 100%;
+            margin: 15px auto 0;
+            border-radius: 20px;
+            border: none;
+            font-weight: 800;
+            text-transform: none;
+            text-decoration: none;
+          }
+          .btn1 {
+            background-color: rgb(63, 129, 216);
+            color: #fff;
+            &:hover {
+              background-color: rgb(100, 140, 192);
+            }
+          }
+          .btn2 {
+            border: 1px solid rgb(63, 129, 216);
+            background-color: #fff;
+            color: var(--twitter-color);
+  
+            &:hover {
+              background-color: var(--twitter-bg);
+            }
+          }
+        }
+      }
+    }
+   }
+ }
+
+
+ // media queries
+@media screen and (min-width: 580px) {
+  .landing{
+    .landing__container{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      width: 100%;
+      height: 100vh;
+      .landing__main{
+       background: rgb(67, 138, 185);
+       background: linear-gradient(
+         90deg,
+         rgb(59, 145, 216) 0%,
+         rgb(139, 200, 247) 100%
+       );
+      }
+      .landing__aside{
+        padding: 0;
       }
     }
   }
 }
 
-@media screen and (max-width: 360px) {
-  .landing {
-    transform: scale(0.9);
-    .landing__twitter {
-      .landing__twitter__join {
-        .btn1,
-        .btn2 {
-          width: 300px !important;
+
+@media screen and (min-width: 992px) {
+  .landing{
+    .landing__container{
+      .landing__aside{
+        .landing__login{
+          form{
+            display: flex;
+            align-items: center;
+            .password__div{
+              margin-left: 10px;
+            }
+            .landing__login__btn{
+              margin-left: 10px;
+              button{
+                border-radius: 30px;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+        .landing__twitter{
+          max-width: 80%;
+          margin: 150px auto 0 ;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .landing{
+    .landing__container{
+      .landing__aside{
+        .landing__twitter{
+          max-width: 60%;
+          margin: 230px auto 0 ;
         }
       }
     }

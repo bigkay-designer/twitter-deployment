@@ -14,8 +14,14 @@ function Signup() {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessagePassword, setErrorMessagePassword] = useState(false)
-    const [errorMessageEmail, setErrorMessageEmail] = useState(false)
+    const [errorMessagePassword, setErrorMessagePassword] = useState({
+        status: false,
+        msg: ''
+    })
+    const [errorMessageEmail, setErrorMessageEmail] = useState({
+        status: false,
+        msg: ''
+    })
     const [successSignup, setSuccessSignup] = useState(false)
     const [redirect, setRedirect] = useState(false)
         
@@ -42,34 +48,37 @@ function Signup() {
             setPassword('')
         })
         .catch(err =>{
-            if(password.length < 6){
-                setErrorMessagePassword(true)
-                window.setTimeout(()=>{
-                    setErrorMessagePassword(false)
-                }, 5000)
-                setPassword('')
-            }
-            axios.get('api/user')
-            .then(res =>{
-                const users = res.data
-                users.map(user=>{
-                   if(user.email === email){
-                        setErrorMessageEmail(true)
-                        window.setTimeout(()=>{
-                            setErrorMessageEmail(false)
-                        }, 5000)
-                        setEmail('')
-                   }
-                })
-                setPassword('')
+            const errResponse = err.response.data.msg
+            errResponse === 'The password needs to be at least 5 characters long.' 
+            && setErrorMessagePassword({
+                status: true,
+                msg: errResponse
             })
-            .catch(err => console.log(err))
+
+            errResponse === "An account with this email already exists."
+            && setErrorMessageEmail({
+                status: true,
+                msg: errResponse
+            })
         })
 
     }
+
+    /// Error handling 
+
+    const passwordErroCheckHandler = () => {
+        password.length < 6 ?
+        setErrorMessagePassword({
+            status: true,
+            msg: 'The password needs to be at least 5 characters long.'
+        })
+        : setErrorMessagePassword({
+            status: false,
+            msg: ''
+        })
+    }
     return (
         <div className="signup">
-            <Landing className="signup__landing" />
             <div className="signup__main">
                 {successSignup &&
                     <FlashMessage duration={5000} persistOnHover={true}>
@@ -95,10 +104,8 @@ function Signup() {
                         <div className="form__div">
                             <label htmlFor="email">email</label>
                             <input type="email" name="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                            {errorMessageEmail &&
-                                <FlashMessage duration={5000} persistOnHover={true}>
-                                    <h3 className="error"> An account with this email already exists.</h3> 
-                                </FlashMessage>
+                            {errorMessageEmail.status &&
+                                <h3 className="error">{errorMessageEmail.msg}</h3> 
                             }
                         </div>
                         <div className="form__div">
@@ -107,15 +114,20 @@ function Signup() {
                         </div>
                         <div className="form__div">
                             <label htmlFor="password">password</label>
-                            <input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                            <input type="password" name="password" value={password} onBlur={passwordErroCheckHandler} onChange={e => setPassword(e.target.value)} required />
+                            {errorMessagePassword.status &&
+                                <h3 className="error">{errorMessagePassword.msg}</h3>
+                            }
+                        </div>
+                        <div className="disclaimer">
+                            <p>By checking the box below, you are agreeing to receive emails from or on behalf of twitter-clone, our family of companies, or one of its third-party associates, to any email you provide. These emails could be sent using an automated email system. Agreement is not a requirement of purchase and you are free to opt-out at any time.</p>
+                        </div>
+                        <div className="terms">
+                            <p>By continuing you agree to our <Link to="#">Terms & Conditions </Link>. See out <Link to="#">Privacy Notice</Link></p>
+                            <input className="radio__agreement" type="checkbox" required  />
                         </div>
                         <Button variant="outlined" fullWidth className="signup__btn" type="submit">Sign up</Button>
                     </form>
-                    {errorMessagePassword &&
-                            <FlashMessage duration={5000} persistOnHover = {true}>
-                                <h3 className="error">The password needs to be at least 6 characters long.</h3>
-                            </FlashMessage>
-                    }
                 </div>
             </div>
         </div>

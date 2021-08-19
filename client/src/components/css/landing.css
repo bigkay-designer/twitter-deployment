@@ -1,121 +1,68 @@
 .landing {
-  -webkit-box-flex: 100%;
-      -ms-flex: 100%;
-          flex: 100%;
+  overflow: hidden;
 }
 
-.landing .landing__container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: auto;
-      grid-template-rows: auto;
-  height: 100vh;
+.landing .landing__container .landing__aside .landing__login {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.landing .landing__popup {
-  position: absolute;
-  top: 0;
-  left: 0;
+.landing .landing__container .landing__aside .landing__login form {
   width: 100%;
-  height: 100vh;
-  background: #bacedb;
-  background: -webkit-gradient(linear, left top, right top, from(#d7dce0), to(#e3f1fc));
-  background: linear-gradient(90deg, #d7dce0 0%, #e3f1fc 100%);
-  z-index: 100;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-.landing .landing__popup .landing__popup__icon {
-  font-size: 90px;
-  color: var(--twitter-color);
-}
-
-.landing .landing__popup--none {
-  display: none;
-}
-
-.landing .landing__main {
-  background: #438ab9;
-  background: -webkit-gradient(linear, left top, right top, from(#3b91d8), to(#8bc8f7));
-  background: linear-gradient(90deg, #3b91d8 0%, #8bc8f7 100%);
-}
-
-.landing .landing__aside .landing__login {
-  padding: 20px;
-}
-
-.landing .landing__aside .landing__login form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.landing .landing__aside .landing__login form input {
-  text-transform: lowercase;
-  padding: 15px;
-  border: none;
-  background-color: #f4f4f4;
-  margin-right: 10px;
+.landing .landing__container .landing__aside .landing__login form .form__div {
+  margin: 20px 0 0;
   border-bottom: 1px solid var(--twitter-color);
+  width: 100%;
+}
+
+.landing .landing__container .landing__aside .landing__login form input {
+  width: 100%;
+  background-color: #f4f4f4;
+  font-size: 16px;
+  padding: 10px;
+  text-transform: lowercase;
+  border: none;
   outline: none;
 }
 
-.landing .landing__aside .landing__login form input::-webkit-input-placeholder {
+.landing .landing__container .landing__aside .landing__login form input::-webkit-input-placeholder {
   font-size: 16px;
   text-transform: capitalize;
 }
 
-.landing .landing__aside .landing__login form input:-ms-input-placeholder {
+.landing .landing__container .landing__aside .landing__login form input:-ms-input-placeholder {
   font-size: 16px;
   text-transform: capitalize;
 }
 
-.landing .landing__aside .landing__login form input::-ms-input-placeholder {
+.landing .landing__container .landing__aside .landing__login form input::-ms-input-placeholder {
   font-size: 16px;
   text-transform: capitalize;
 }
 
-.landing .landing__aside .landing__login form input::placeholder {
+.landing .landing__container .landing__aside .landing__login form input::placeholder {
   font-size: 16px;
   text-transform: capitalize;
 }
 
-.landing .landing__aside .landing__login form input[type="password"] {
+.landing .landing__container .landing__aside .landing__login form input[type="password"] {
   text-transform: none !important;
 }
 
-.landing .landing__aside .landing__login form .landing__login__btn {
-  background-color: #fff;
-  color: var(--twitter-color);
-  border-radius: 30px;
+.landing .landing__container .landing__aside .landing__login form .landing__login__btn button {
+  width: 120px;
+  background-color: #3f81d8;
+  color: #fff;
+  border-radius: 0px;
   font-weight: 800;
+  margin-top: 10px;
+  border: none;
+  padding: 10px 0;
 }
 
-.landing .landing__aside .landing__login form .landing__login__btn:hover {
-  background-color: var(--twitter-bg);
-}
-
-.landing .landing__aside .landing__twitter {
+.landing .landing__container .landing__aside .landing__twitter {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -123,29 +70,26 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 60%;
-  margin: 200px auto auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  margin: 90px auto 0;
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__title {
-  margin-bottom: 50px;
-  max-width: 300px;
-}
-
-.landing .landing__aside .landing__twitter .landing__twitter__title .landing__twitter--icon {
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__title .landing__twitter--icon {
   color: var(--twitter-color);
   font-size: 46px;
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__join .landing__join__btn {
-  width: 340px;
-  margin-top: 15px;
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join {
+  width: 100%;
+  margin: 40px  0 0;
+}
+
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .landing__join__btn {
+  width: 100%;
+  margin: 15px auto 0;
   border-radius: 20px;
   border: none;
   font-weight: 800;
@@ -153,78 +97,75 @@
   text-decoration: none;
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__join .btn1 {
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .btn1 {
   background-color: #3f81d8;
   color: #fff;
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__join .btn1:hover {
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .btn1:hover {
   background-color: #648cc0;
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__join .btn2 {
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .btn2 {
   border: 1px solid #3f81d8;
   background-color: #fff;
   color: var(--twitter-color);
 }
 
-.landing .landing__aside .landing__twitter .landing__twitter__join .btn2:hover {
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .btn2:hover {
   background-color: var(--twitter-bg);
 }
 
-@media screen and (max-width: 560px) {
-  .landing {
-    overflow: hidden !important;
-  }
+@media screen and (min-width: 580px) {
   .landing .landing__container {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-  }
-  .landing .landing__main {
-    display: none;
-  }
-  .landing .landing__aside .landing__login {
-    padding: 10px;
-  }
-  .landing .landing__aside .landing__login form {
-    display: block;
-  }
-  .landing .landing__aside .landing__login form input {
-    width: 85%;
-    margin: 10px 0 10px 0;
-  }
-  .landing .landing__aside .landing__login form .landing__login__btn {
-    border-radius: 0;
-    width: 100px;
-    color: #fff;
-    background-color: #3f81d8;
-  }
-  .landing .landing__aside .landing__twitter {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -ms-grid-rows: auto;
+        grid-template-rows: auto;
     width: 100%;
-    margin: 90px 55px auto auto;
-    padding: 0 10px;
+    height: 100vh;
+  }
+  .landing .landing__container .landing__main {
+    background: #438ab9;
+    background: -webkit-gradient(linear, left top, right top, from(#3b91d8), to(#8bc8f7));
+    background: linear-gradient(90deg, #3b91d8 0%, #8bc8f7 100%);
+  }
+  .landing .landing__container .landing__aside {
+    padding: 0;
   }
 }
 
-@media screen and (max-width: 360px) {
-  .landing {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+@media screen and (min-width: 992px) {
+  .landing .landing__container .landing__aside .landing__login form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-  .landing .landing__twitter .landing__twitter__join .btn1,
-  .landing .landing__twitter .landing__twitter__join .btn2 {
-    width: 300px !important;
+  .landing .landing__container .landing__aside .landing__login form .password__div {
+    margin-left: 10px;
+  }
+  .landing .landing__container .landing__aside .landing__login form .landing__login__btn {
+    margin-left: 10px;
+  }
+  .landing .landing__container .landing__aside .landing__login form .landing__login__btn button {
+    border-radius: 30px;
+    margin-top: 20px;
+  }
+  .landing .landing__container .landing__aside .landing__twitter {
+    max-width: 80%;
+    margin: 150px auto 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .landing .landing__container .landing__aside .landing__twitter {
+    max-width: 60%;
+    margin: 230px auto 0;
   }
 }
 /*# sourceMappingURL=landing.css.map */

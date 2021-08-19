@@ -1,48 +1,48 @@
 .signup {
   .signup__main {
     flex: 100%;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    width: 50%;
-    margin: auto;
-    border: 1px solid grey;
-    padding: 30px;
+    margin: 0 auto;
+    border: none;
     border-radius: 20px;
     background-color: #fff;
+    padding: 10px 20px;
     .signup__tittle {
       margin: 20px 0;
     }
     .signup__form {
       form {
         .form__div {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          margin-bottom: 30px;
-          padding-right: 7px;
+          margin-top: 30px;
           label {
-            font-size: 20px;
+            font-size: 16px;
             text-transform: capitalize;
             padding: 10px 0;
           }
           input {
             text-transform: lowercase;
             width: 100%;
+            margin-top: 5px;
             border: none;
             background-color: #f4f4f4;
             border-bottom: 1px solid var(--twitter-color);
-            padding: 15px 0px 15px 7px;
-            font-size: 18px;
+            padding: 15px 10px;
+            font-size: 16px;
             outline: none;
           }
           input[type="password"] {
             text-transform: none !important;
           }
         }
-
+        .disclaimer {
+          margin: 20px 0 10px;
+        }
+        .terms {
+          margin: 20px 0 10px;
+          font-size: 14px;
+          line-height: 1.5em;
+        }
         .signup__btn {
+          margin-top: 19px;
           background-color: rgb(63, 129, 216);
           color: #fff;
           font-weight: 800;
@@ -66,20 +66,26 @@
 }
 
 // media queries
-@media screen and (max-width: 450px) {
+@media only screen and (min-width: 768px) {
   .signup {
     .signup__main {
-      width: 80%;
-      height: 100vh;
-      margin: 40px 0;
+      max-width: 70%;
+      margin: auto;
     }
   }
 }
-
-@media only screen and (min-width: 1300px) {
+@media only screen and (min-width: 992px) {
   .signup {
     .signup__main {
-      width: 30%;
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+}
+@media only screen and (min-width: 992px) {
+  .signup {
+    .signup__main {
+      max-width: 50%;
       margin: auto;
     }
   }
