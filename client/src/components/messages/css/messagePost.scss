@@ -1,8 +1,9 @@
 .messagePosts {
   display: flex;
   align-items: flex-start;
+  width: 100%;
   border-bottom: 1px solid var(--twitter-borderBottom);
-  padding-top: 10px;
+  padding: 10px;
   cursor: pointer;
   &:hover {
     background-color: rgba(231, 239, 243, 0.5);
@@ -10,6 +11,7 @@
   .posts__header {
     width: 420px;
     .posts__headerText {
+      margin-left: 10px;
       a {
         text-decoration: none;
         display: flex;
@@ -60,14 +62,3 @@
     display: none;
   }
 }
-
-// @media screen and (max-width: 450px) {
-//   .posts {
-//     transform: scale(0.9);
-//   }
-//   .posts__body {
-//     .posts__header {
-//       width: 100% !important;
-//     }
-//   }
-// }

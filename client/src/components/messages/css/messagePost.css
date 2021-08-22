@@ -5,8 +5,9 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  width: 100%;
   border-bottom: 1px solid var(--twitter-borderBottom);
-  padding-top: 10px;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -16,6 +17,10 @@
 
 .messagePosts .posts__header {
   width: 420px;
+}
+
+.messagePosts .posts__header .posts__headerText {
+  margin-left: 10px;
 }
 
 .messagePosts .posts__header .posts__headerText a {

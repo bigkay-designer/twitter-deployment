@@ -53,6 +53,7 @@
         -ms-flex: 0.6;
             flex: 0.6;
     display: block;
+    height: 100vh;
   }
 }
 /*# sourceMappingURL=messagesFeed.css.map */

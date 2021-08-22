@@ -5,7 +5,7 @@
 }
 
 body {
-  overflow-x: hidden ;
+  overflow-x: hidden;
   --twitter-color: rgba(29, 161, 242, 1);
   --twitter-bg: rgba(155, 216, 253, 0.4);
   --twitter-borderBottom: rgb(225, 232, 235);
@@ -18,14 +18,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   /* padding: 0 10px; */
-}
-
-.messages {
-  display: flex;
-  height: 100vh;
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .error {
   font-size: 14px;
@@ -44,3 +36,13 @@ body {
 }
 
 /* media */
+
+@media screen and (min-width: 560px) {
+  .messages {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -142,6 +142,9 @@
     padding: 0 20px;
     margin-right: 30px;
   }
+  .sidebar .sidebar__container .messageView__form {
+    display: none;
+  }
   .sidebar .sidebar__container .sidebar__twitter,
   .sidebar .sidebar__container .sidebar__btn,
   .sidebar .sidebar__container .display__none {

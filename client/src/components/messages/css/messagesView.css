@@ -41,8 +41,7 @@
 }
 
 .messageView .messageView__header {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 100;
   background-color: #fff;
@@ -53,12 +52,9 @@
       -ms-flex-align: start;
           align-items: flex-start;
   border-bottom: 1px solid var(--twitter-borderBottom);
-  padding-top: 10px;
+  padding: 10px;
+  width: 100%;
   cursor: pointer;
-}
-
-.messageView .messageView__header .posts__header {
-  width: 420px;
 }
 
 .messageView .messageView__header .posts__header .posts__headerText {
@@ -68,6 +64,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  padding-left: 10px;
 }
 
 .messageView .messageView__header .posts__header .posts__headerText h3 {
@@ -120,7 +117,8 @@
 
 .messageView .messageView__body {
   width: 100%;
-  margin: 10px 0;
+  height: 100%;
+  margin: 70px 0 50px;
 }
 
 .messageView .messageView__content .message__header__container {
@@ -142,7 +140,8 @@
 .messageView .messageView__content .message__header__container .messageView__content__body .content__bodyText {
   background-color: #e1e8eb;
   border-radius: 30px;
-  padding: 15px 20px;
+  padding: 10px 15px;
+  margin-left: 7px;
 }
 
 .messageView .messageView__content .message__header__container .messageView__content__body .content__bodyText h3 {
@@ -189,101 +188,82 @@
   color: #fff;
 }
 
-.messageView .messageView__form {
-  border: 1px solid var(--twitter-borderBottom);
-  background-color: #fff;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 10% 10% 80%;
-      grid-template-columns: 10% 10% 80%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  padding: 15px 0;
-}
-
-.messageView .messageView__form .icons {
-  color: var(--twitter-color);
-  padding-left: 10px;
-  cursor: pointer;
-}
-
-.messageView .messageView__form form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.messageView .messageView__form form .messageView__form__input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 75%;
-  background-color: #e1e8eb;
-  border: none;
-  border-radius: 20px;
-  margin: 10px 0 5px;
-  padding: 10px 15px;
-}
-
-.messageView .messageView__form form input {
-  border: none;
-  background-color: #e1e8eb;
-  font-size: 16px;
-  outline: none;
-  color: #18191a;
-  width: 220px;
-  padding: 7px 0;
-}
-
-.messageView .messageView__form form .messagesFeed__searchIcon {
-  color: gray;
-  cursor: pointer;
-}
-
-.messageView .messageView__form form button {
-  border: none;
-  background-color: #fff;
-}
-
-@media screen and (max-width: 560px) {
-  .messageView {
-    margin-bottom: 70px;
-  }
-  .messageView .messageView__body__container {
-    width: 90%;
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  .messageView .messageView__body {
-    height: 100%;
-    padding-bottom: 100px;
-  }
-  .messageView .messageView__form {
-    display: none;
-  }
-}
-
 @media screen and (min-width: 560px) {
+  .messageView {
+    position: relative;
+  }
   .messageView .messageView__body {
     overflow-y: scroll;
     overflow-x: hidden !important;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    height: 83vh;
+    height: 75vh;
+  }
+  .messageView .messageView__form {
+    border: 1px solid var(--twitter-borderBottom);
+    background-color: #fff;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 10% 10% 80%;
+        grid-template-columns: 10% 10% 80%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px 0;
+  }
+  .messageView .messageView__form .icons {
+    color: var(--twitter-color);
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  .messageView .messageView__form form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .messageView .messageView__form form .messageView__form__input {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 75%;
+    background-color: #e1e8eb;
+    border: none;
+    border-radius: 20px;
+    margin: 10px 0 5px;
+    padding: 10px 15px;
+  }
+  .messageView .messageView__form form input {
+    border: none;
+    background-color: #e1e8eb;
+    font-size: 16px;
+    outline: none;
+    color: #18191a;
+    width: 220px;
+    padding: 7px 0;
+  }
+  .messageView .messageView__form form .messagesFeed__searchIcon {
+    color: gray;
+    cursor: pointer;
+  }
+  .messageView .messageView__form form button {
+    border: none;
+    background-color: #fff;
   }
 }
 /*# sourceMappingURL=messagesView.css.map */
