@@ -82,14 +82,4 @@
     display: none;
   }
 }
-
-@media screen and (max-width: 450px) {
-  .posts {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  .posts__body .posts__header {
-    width: 100% !important;
-  }
-}
 /*# sourceMappingURL=messagePost.css.map */

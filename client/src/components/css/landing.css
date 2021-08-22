@@ -47,7 +47,7 @@
   text-transform: capitalize;
 }
 
-.landing .landing__container .landing__aside .landing__login form input[type="password"] {
+.landing .landing__container .landing__aside .landing__login form input[type='password'] {
   text-transform: none !important;
 }
 
@@ -70,11 +70,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 0 20px;
   margin: 90px auto 0;
+}
+
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__title {
+  text-align: left;
 }
 
 .landing .landing__container .landing__aside .landing__twitter .landing__twitter__title .landing__twitter--icon {
@@ -82,9 +86,13 @@
   font-size: 46px;
 }
 
+.landing .landing__container .landing__aside .landing__twitter .landing__twitter__title h2 {
+  word-wrap: break-word;
+}
+
 .landing .landing__container .landing__aside .landing__twitter .landing__twitter__join {
   width: 100%;
-  margin: 40px  0 0;
+  margin: 40px 0 0;
 }
 
 .landing .landing__container .landing__aside .landing__twitter .landing__twitter__join .landing__join__btn {
@@ -162,9 +170,9 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
   .landing .landing__container .landing__aside .landing__twitter {
-    max-width: 60%;
+    max-width: 50%;
     margin: 230px auto 0;
   }
 }

@@ -123,10 +123,17 @@
 
 .feed .feed__container .feed__tweet__popup .feed__tweet__title {
   padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .feed .feed__container .feed__tweet__popup .feed__tweet__title .feed__input {
-  margin-left: 25px;
+  font-size: 16px;
+  padding-left: 15px;
   color: white;
   background-color: #2b272e;
   outline: none;
@@ -167,34 +174,55 @@
 }
 
 .feed .feed__container .feed__tweet__popup .feed__tweet__attachment {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
+  margin: 20px 0 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 100%;
-  margin-bottom: 50px;
 }
 
 .feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input {
   display: none;
+  font-size: 16px;
+  padding: 7px;
+  width: 100%;
+  border: none;
+}
+
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input::-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input:-ms-input-placeholder {
+  text-transform: capitalize;
+}
+
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input::-ms-input-placeholder {
+  text-transform: capitalize;
+}
+
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input::placeholder {
+  text-transform: capitalize;
 }
 
 .feed .feed__container .feed__tweet__popup .feed__tweet__attachment .feed__tweet__input--show {
   display: inline;
 }
 
-.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .tweet__attachment__icon {
-  margin: 0 10px;
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment label {
+  margin: 15px 0px 0 15px;
   -webkit-transform: scale(2);
           transform: scale(2);
+}
+
+.feed .feed__container .feed__tweet__popup .feed__tweet__attachment .tweet__attachment__icon {
   color: rgba(29, 161, 242, 0.7);
   cursor: pointer;
 }
@@ -263,7 +291,7 @@
         grid-template-columns: auto;
     -ms-grid-rows: auto;
         grid-template-rows: auto;
-        grid-template-areas: "ti ti" "file file" "icon btn";
+        grid-template-areas: 'ti ti' 'file file' 'icon btn';
     border-bottom: 5px solid var(--twitter-borderBottom);
     padding: 10px;
   }

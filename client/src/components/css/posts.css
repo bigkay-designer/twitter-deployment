@@ -6,18 +6,19 @@
       -ms-flex-align: start;
           align-items: flex-start;
   border-bottom: 1px solid var(--twitter-borderBottom);
-  padding-top: 10px;
+  margin-top: 15px;
+  padding: 10px 10px 0;
 }
 
 .posts .posts__body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 10px;
+  padding: 0 10px 10px;
 }
 
 .posts .posts__body .posts__header {
-  width: 420px;
+  width: 100%;
 }
 
 .posts .posts__body .posts__header .posts__headerText {
@@ -60,9 +61,13 @@
 }
 
 .posts .posts__body img {
-  width: 420px;
-  max-height: 500px;
+  width: 100%;
+  max-width: 100%;
+  height: 260px;
   border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  vertical-align: top;
 }
 
 .posts .posts__body .posts__icons {
@@ -79,20 +84,13 @@
   cursor: pointer;
 }
 
-.posts .posts__body .heartRed {
-  color: red !important;
+.posts .posts__body .showSidebar__notAvailable {
+  cursor: not-allowed;
+  text-decoration: line-through;
+  color: grey;
 }
 
-@media screen and (max-width: 450px) {
-  .posts {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
-  }
-  .posts__body .posts__header {
-    width: 100% !important;
-  }
-  .posts__body img {
-    width: 100% !important;
-  }
+.posts .posts__body .heartRed {
+  color: red !important;
 }
 /*# sourceMappingURL=posts.css.map */
