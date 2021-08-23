@@ -1,7 +1,4 @@
 .messageFeed {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: none;
   border: 1px solid var(--twitter-borderBottom);
 }
@@ -13,6 +10,7 @@
 
 .messageFeed .messagesFeed__search {
   border: 1px solid var(--twitter-borderBottom);
+  padding: 10px;
 }
 
 .messageFeed .messagesFeed__search form {
@@ -29,17 +27,16 @@
   border: none;
   border-radius: 20px;
   padding: 10px;
-  margin: 20px;
 }
 
 .messageFeed .messagesFeed__search form input {
+  width: 100%;
   border: none;
   background-color: #e1e8eb;
   font-size: 16px;
   padding-left: 10px;
   outline: none;
   color: #18191a;
-  width: 220px;
 }
 
 .messageFeed .messagesFeed__search form .messagesFeed__searchIcon {
@@ -47,11 +44,8 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 760px) {
   .messageFeed {
-    -webkit-box-flex: 0.6;
-        -ms-flex: 0.6;
-            flex: 0.6;
     display: block;
     height: 100vh;
   }

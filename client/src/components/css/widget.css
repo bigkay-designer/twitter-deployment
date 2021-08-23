@@ -1,9 +1,6 @@
 .widget {
-  -webkit-box-flex: 0.3;
-      -ms-flex: 0.3 1;
-          flex: 0.3 1;
   display: none;
-  margin-left: 30px;
+  padding: 0 10px;
 }
 
 .widget .input {
@@ -24,6 +21,7 @@
 }
 
 .widget .input input {
+  width: 100%;
   border: none;
   background-color: #e1e8eb;
   font-size: 16px;
@@ -48,7 +46,7 @@
   font-weight: 800;
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 992px) {
   .widget {
     display: block;
   }

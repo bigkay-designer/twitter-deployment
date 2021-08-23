@@ -16,14 +16,13 @@ function Posts({
   text,
   image,
   avatar,
-  keys,
   deletePost,
   currentuser,
+  hidePost,
 }) {
-  const [isPostLiked, setIsPostLiked] = useState(false);
   const [postLiked, setPostLiked] = useState(false);
   return (
-    <div className="posts" key={keys}>
+    <div className={`posts`}>
       <div className="posts__avatar">
         <Avatar src={avatar} />
       </div>

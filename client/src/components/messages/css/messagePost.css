@@ -81,10 +81,4 @@
 .messagePosts .heartRed {
   color: red !important;
 }
-
-@media screen and (max-width: 720px) {
-  .messagePosts {
-    display: none;
-  }
-}
 /*# sourceMappingURL=messagePost.css.map */

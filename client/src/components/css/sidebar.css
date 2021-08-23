@@ -1,12 +1,11 @@
 .sidebar {
   padding: 0;
-  margin-top: 20px;
   position: relative;
 }
 
 .sidebar .sidebar__container {
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   right: 0;
   width: 100%;
   z-index: 100;
@@ -25,12 +24,11 @@
           align-items: center;
   width: 100%;
   padding: 15px 0;
-  margin-bottom: 10px;
 }
 
 .sidebar .sidebar__container .messageView__form .icons {
   color: var(--twitter-color);
-  padding-left: 10px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
@@ -56,8 +54,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 75%;
-  background-color: #e1e8eb;
+  width: 80%;
+  background-color: #e4e4e4;
   border: none;
   border-radius: 20px;
   margin: 10px 0 5px;
@@ -66,11 +64,11 @@
 
 .sidebar .sidebar__container .messageView__form form input {
   border: none;
-  background-color: #e1e8eb;
+  background-color: #e4e4e4;
   font-size: 16px;
   outline: none;
   color: #18191a;
-  width: 220px;
+  width: 100%;
   padding: 7px 0;
 }
 
@@ -92,7 +90,7 @@
 
 .sidebar .sidebar__container .showSidebar {
   color: ivory;
-  margin: 0;
+  padding: 10px 0;
 }
 
 .sidebar .sidebar__container .showSidebar .showSidebar__icons {
@@ -105,6 +103,10 @@
 
 .sidebar .sidebar__container .sidebar__user {
   display: none;
+}
+
+.sidebar .sidebar__container .sidebar__user h3 {
+  word-break: break-all;
 }
 
 .sidebar .sidebar__container .sidebar__icons {
@@ -126,21 +128,14 @@
   color: grey;
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 760px) {
   .sidebar {
-    -webkit-box-flex: 0.3;
-        -ms-flex: 0.3 1;
-            flex: 0.3 1;
     margin: 0;
   }
   .sidebar .sidebar__container {
     background-color: #fff;
     position: relative;
-    min-width: -webkit-fit-content;
-    min-width: -moz-fit-content;
-    min-width: fit-content;
-    padding: 0 20px;
-    margin-right: 30px;
+    padding: 0 10px;
   }
   .sidebar .sidebar__container .messageView__form {
     display: none;
@@ -165,7 +160,6 @@
     margin-top: 35px;
   }
   .sidebar .sidebar__container .showSidebar h3 {
-    display: inline-block;
     font-size: 18px;
     text-transform: capitalize;
     font-weight: 800;
@@ -181,6 +175,7 @@
   .sidebar .sidebar__container .sidebar__twitter {
     color: var(--twitter-color);
     font-size: 2rem;
+    cursor: pointer;
   }
   .sidebar .sidebar__container .showSidebar__active {
     color: var(--twitter-color);
@@ -227,6 +222,20 @@
     color: #fff !important;
     border: none !important;
     font-weight: 800;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sidebar {
+    margin: 0;
+  }
+  .sidebar .sidebar__container {
+    background-color: #fff;
+    position: relative;
+    padding: 0 10px;
+  }
+  .sidebar .sidebar__container .showSidebar h3 {
+    display: inline-block;
   }
 }
 /*# sourceMappingURL=sidebar.css.map */

@@ -6,9 +6,6 @@ import { Button } from '@material-ui/core';
 import {
   StarOutlined,
   CropOriginal,
-  InsertEmoticon,
-  Schedule,
-  GifOutlined,
   AccountCircle,
   Cancel,
 } from '@material-ui/icons';
@@ -17,58 +14,46 @@ import Posts from './Posts';
 
 function Feed() {
   const [userPost, setUserPost] = useState([]);
-  const [postAdded, setPostAdded] = useState();
-  const [user, setUser] = useState({ token: undefined, user: undefined });
+  const [postAdded, setPostAdded] = useState(false);
+  // const [user, setUser] = useState({ token: undefined, user: undefined });
   const [tweetText, setTweetText] = useState('');
   const [tweetImage, setTweetImage] = useState('');
   const [linkTweetImage, setLinkTweetImage] = useState('');
   const [showLinkBox, setShowLinkBox] = useState(false);
   const [loggedout, setLoggedOut] = useState(false);
   const [tweetBox, setTweetBox] = useState(false);
-  // const [file, setFile] = useState('')
-  // const [fileName, setFileName] = useState('choose file')
-  // const [uploadedFile, setUploadedFile] = useState({myFileName: '', filePath: ''})
+  const [disbaleTweetBtn, setDisableTweetBtn] = useState(true);
 
-  useEffect(() => {
-    axios
+  const user = localStorage.getItem('t-user')
+    ? JSON.parse(localStorage.getItem('t-user'))
+    : [];
+
+  const fetchPosts = async () => {
+    await axios
       .get('/api/post')
       .then((data) => {
         const newPost = data.data;
         setUserPost(newPost);
       })
       .catch((err) => console.log(`error ${err}`));
+  };
+  useEffect(() => {
+    fetchPosts();
   }, [postAdded]);
 
-  useEffect(() => {
-    axios
-      .get('/api', { headers: { 'auth-token': localStorage.getItem('token') } })
-      .then((res) => {
-        setUser(res.data);
+  const deletePostHandler = async (e, dataId) => {
+    e.preventDefault();
+    await axios
+      .delete(`/api/post/posts/${dataId}`)
+      .then((posts) => {
+        setPostAdded(!postAdded);
       })
       .catch((err) => console.log(`error ${err}`));
-  }, []);
-
-  const deletePostHandler = (e, dataId) => {
-    e.preventDefault();
-    axios
-      .delete(`/api/post/posts/${dataId}`)
-      .then((posts) => {})
-      .catch((err) => console.log(`error ${err}`));
-    axios.get('/api/post').then((data) => {
-      const newPost = data.data;
-      setPostAdded(newPost.length);
-    });
   };
-
-  // const selectFileHandler = (e) =>{
-  //     setTweetImage(URL.createObjectURL(e.target.files[0]))
-  //     let handlerFile = e.target.files[0]
-  //     // setFile(handlerFile)
-  //     console.log(handlerFile)
-  // }
 
   const tweetTextHandler = (e) => {
     setTweetText(e.target.value);
+    setDisableTweetBtn(false);
   };
 
   const closeTweetImgHandler = () => {
@@ -77,22 +62,7 @@ function Feed() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    // ********************************
-    // const formData = new FormData()
-    // formData.append('file', file)
-    // await axios.post('/api/post/posts', formData)
-    // .then(res => {
-    //     setUploadedFile({ myFileName: res.data.fileName, filePath: res.data.filePath});
-    // })
-    // .catch (err=>{
-    //     if(err.response.status === 500){
-    //         console.log(err)
-    //     }else{
-    //         console.log(err.response.data)
-    //     }
-    // })
-    // ********************************
+    if (tweetText === '') return null;
     const newPost = {
       displayName: user.name,
       username: user.username,
@@ -108,17 +78,9 @@ function Feed() {
     axios
       .post('/api/post/posts', newPost)
       .then((res) => {
-        // console.log(res)
+        setPostAdded(!postAdded);
       })
       .catch((err) => console.log(`error ${err.message}`));
-
-    axios
-      .get('/api/post')
-      .then((data) => {
-        const newPost = data.data;
-        setPostAdded(newPost.length);
-      })
-      .catch((err) => console.log(`error ${err}`));
     setTweetImage('');
     setTweetText('');
     setLinkTweetImage('');
@@ -134,6 +96,7 @@ function Feed() {
   };
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('t-user');
     setLoggedOut(true);
   };
 
@@ -214,7 +177,11 @@ function Feed() {
                             <Schedule cl`assName="tweet__attachment__icon" />  */}
             </div>
 
-            <div className="feed__tweet__btn">
+            <div
+              className={`feed__tweet__div ${
+                disbaleTweetBtn && 'disable__btn'
+              }`}
+            >
               <Button
                 className="feed__tweet__btn"
                 variant="outlined"
@@ -224,12 +191,10 @@ function Feed() {
               </Button>
             </div>
           </div>
-
           {/* ************************************************************************** */}
-          <div className="feed__posts">
-            {userPost.map((data) => (
+          {userPost.map((data) => (
+            <div className="feed__posts" key={data._id}>
               <Posts
-                keys={data._id}
                 displayName={data.displayName}
                 username={data.username}
                 text={data.text}
@@ -239,8 +204,8 @@ function Feed() {
                 deletePost={(e) => deletePostHandler(e, data._id)}
                 currentuser={user.username}
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </form>
       </div>
       <div className="add__tweet">

@@ -1,7 +1,6 @@
 .widget {
-  flex: 0.3 1;
   display: none;
-  margin-left: 30px;
+  padding: 0 10px;
   .input {
     background-color: rgb(225, 232, 235);
     display: flex;
@@ -13,6 +12,7 @@
     margin: 20px;
 
     input {
+      width: 100%;
       border: none;
       background-color: rgb(225, 232, 235);
       font-size: 16px;
@@ -38,7 +38,7 @@
   }
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 992px) {
   .widget {
     display: block;
   }

@@ -1,12 +1,3 @@
-.messageView {
-  min-width: -webkit-fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  -webkit-box-flex: 0.3;
-      -ms-flex: 0.3;
-          flex: 0.3;
-}
-
 .messageView .messageView__defualt {
   display: none;
   -webkit-box-orient: vertical;
@@ -38,6 +29,10 @@
 
 .messageView .messageView__defualt p {
   color: #949393;
+}
+
+.messageView .messageView__form {
+  display: none;
 }
 
 .messageView .messageView__header {
@@ -117,8 +112,15 @@
 
 .messageView .messageView__body {
   width: 100%;
-  height: 100%;
   margin: 70px 0 50px;
+  overflow-y: scroll;
+  overflow-x: hidden !important;
+  height: 70vh;
+  scroll-behavior: smooth;
+}
+
+.messageView .messageView__content {
+  padding: 0 5px;
 }
 
 .messageView .messageView__content .message__header__container {
@@ -139,18 +141,19 @@
 
 .messageView .messageView__content .message__header__container .messageView__content__body .content__bodyText {
   background-color: #e1e8eb;
-  border-radius: 30px;
   padding: 10px 15px;
   margin-left: 7px;
 }
 
 .messageView .messageView__content .message__header__container .messageView__content__body .content__bodyText h3 {
+  font-size: 18px;
   text-decoration: underline;
   margin: 0;
   padding: 0;
 }
 
 .messageView .messageView__content .message__header__container .messageView__content__body .content__bodyText p {
+  font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 18px;
 }
@@ -186,18 +189,19 @@
 .messageView .message__reciever .content__bodyText {
   background-color: var(--twitter-color) !important;
   color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
-@media screen and (min-width: 560px) {
+.messageView .message__sender .content__bodyText {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+@media screen and (min-width: 760px) {
   .messageView {
     position: relative;
-  }
-  .messageView .messageView__body {
-    overflow-y: scroll;
-    overflow-x: hidden !important;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: 75vh;
   }
   .messageView .messageView__form {
     border: 1px solid var(--twitter-borderBottom);
@@ -213,11 +217,11 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 0;
   }
   .messageView .messageView__form .icons {
     color: var(--twitter-color);
-    padding-left: 10px;
+    margin: 0 10px;
     cursor: pointer;
   }
   .messageView .messageView__form form {
@@ -241,20 +245,20 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    width: 75%;
-    background-color: #e1e8eb;
+    width: 100%;
+    background-color: #e4e4e4;
     border: none;
     border-radius: 20px;
     margin: 10px 0 5px;
     padding: 10px 15px;
   }
   .messageView .messageView__form form input {
+    background-color: #e4e4e4;
     border: none;
-    background-color: #e1e8eb;
     font-size: 16px;
     outline: none;
     color: #18191a;
-    width: 220px;
+    width: 100%;
     padding: 7px 0;
   }
   .messageView .messageView__form form .messagesFeed__searchIcon {

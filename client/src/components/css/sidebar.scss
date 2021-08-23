@@ -1,10 +1,9 @@
 .sidebar {
   padding: 0;
-  margin-top: 20px;
   position: relative;
   .sidebar__container {
     position: fixed;
-    bottom: 0;
+    bottom: -1px;
     right: 0;
     width: 100%;
     z-index: 100;
@@ -17,10 +16,9 @@
       align-items: center;
       width: 100%;
       padding: 15px 0;
-      margin-bottom: 10px;
       .icons {
         color: var(--twitter-color);
-        padding-left: 10px;
+        margin: 0 10px;
         cursor: pointer;
       }
       form {
@@ -31,8 +29,8 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 75%;
-          background-color: rgb(225, 232, 235);
+          width: 80%;
+          background-color: rgb(228, 228, 228);
           border: none;
           border-radius: 20px;
           margin: 10px 0 5px;
@@ -40,11 +38,11 @@
         }
         input {
           border: none;
-          background-color: rgb(225, 232, 235);
+          background-color: rgb(228, 228, 228);
           font-size: 16px;
           outline: none;
           color: rgb(24, 25, 26);
-          width: 220px;
+          width: 100%;
           padding: 7px 0;
         }
         .messagesFeed__searchIcon {
@@ -64,7 +62,7 @@
     }
     .showSidebar {
       color: ivory;
-      margin: 0;
+      padding: 10px 0;
       .showSidebar__icons {
         font-size: 30px;
       }
@@ -74,6 +72,9 @@
     }
     .sidebar__user {
       display: none;
+      h3 {
+        word-break: break-all;
+      }
     }
     .sidebar__icons {
       display: flex;
@@ -90,16 +91,13 @@
 }
 
 ///// media query
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 760px) {
   .sidebar {
-    flex: 0.3 1;
     margin: 0;
     .sidebar__container {
       background-color: #fff;
       position: relative;
-      min-width: fit-content;
-      padding: 0 20px;
-      margin-right: 30px;
+      padding: 0 10px;
       .messageView__form {
         display: none;
       }
@@ -116,7 +114,6 @@
         color: #000;
         margin-top: 35px;
         h3 {
-          display: inline-block;
           font-size: 18px;
           text-transform: capitalize;
           font-weight: 800;
@@ -133,6 +130,7 @@
       .sidebar__twitter {
         color: var(--twitter-color);
         font-size: 2rem;
+        cursor: pointer;
       }
       .showSidebar__active {
         color: var(--twitter-color);
@@ -179,27 +177,18 @@
   }
 }
 
-// @media screen and (max-width: 1060px) {
-//   .sidebar {
-//     padding: 0 !important;
-//     .sidebar__container {
-//       padding: 0 !important;
-//     }
-//     .showSidebar {
-//       h3 {
-//         display: none !important;
-//       }
-//     }
-//     .sidebar__btn {
-//       display: none !important;
-//     }
-//     .sidebar__user {
-//       button {
-//         display: none;
-//       }
-//       padding: 0 10px;
-//     }
-//   }
-// }
-
-// *************************************************
+@media screen and (min-width: 992px) {
+  .sidebar {
+    margin: 0;
+    .sidebar__container {
+      background-color: #fff;
+      position: relative;
+      padding: 0 10px;
+      .showSidebar {
+        h3 {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
