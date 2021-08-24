@@ -15,15 +15,14 @@
 .sidebar .sidebar__container .messageView__form {
   border: 1px solid var(--twitter-borderBottom);
   background-color: #fff;
-  display: -ms-grid;
-  display: grid;
+  display: none;
   -ms-grid-columns: 10% 10% 80%;
       grid-template-columns: 10% 10% 80%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 
 .sidebar .sidebar__container .messageView__form .icons {

@@ -37,7 +37,7 @@ function Posts({
             <span className="span">@{username} </span>
           </div>
           <div className="posts__description">
-            <span> {text} </span>
+            <p> {text} </p>
           </div>
         </div>
         {image ? <img src={image} alt="gif" /> : null}

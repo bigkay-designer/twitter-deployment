@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Pusher from 'pusher-js';
 import axios from '../../axios';
 import { Button } from '@material-ui/core';
@@ -16,7 +16,9 @@ import './css/messagesView.css';
 function MessageView() {
   const [message, setMessage] = useState([]);
   const [messageText, setMessageText] = useState('');
+  const [newMessage, setNewMessage] = useState(false);
   const [removeMessage, setRemoveMessage] = useState(true);
+  const scrollBottom = useRef(null);
   // const [user, setUser] = useState([]);
   let date = new Date();
 
@@ -25,13 +27,23 @@ function MessageView() {
     : [];
   const fetchMessages = async () => {
     await axios.get('/api/message').then((data) => {
-      let newMessage = data.data;
-      setMessage(newMessage);
+      let savedMessage = data.data;
+      setMessage(savedMessage);
     });
   };
+
+  const scrollBottomHandler = () => {
+    scrollBottom.current?.scrollIntoView({
+      block: 'nearest',
+      inline: 'center',
+      behavior: 'smooth',
+      alignToTop: false,
+    });
+  };
+
   useEffect(() => {
     fetchMessages();
-  }, [removeMessage]);
+  }, [removeMessage, newMessage]);
 
   useEffect(() => {
     const pusher = new Pusher('f9ff0c0b6cf24f35ed0d', {
@@ -63,6 +75,8 @@ function MessageView() {
       .post('api/message/new', newData)
       .then((res) => {
         // console.log(res)
+        setNewMessage(!newMessage);
+        scrollBottomHandler();
       })
       .catch((err) => console.log(err));
     setMessageText('');
@@ -139,25 +153,27 @@ function MessageView() {
             </div>
           ))}
         </div>
+        <div ref={scrollBottom}></div>
       </div>
-
-      <div className="messageView__form">
-        <CropOriginal className="icons" />
-        <GifOutlined className="icons" />
-        <form onSubmit={onSubmitHandler}>
-          <div className="messageView__form__input">
-            <input
-              type="text"
-              placeholder="Start a new message"
-              value={messageText}
-              onChange={(e) => setMessageText(e.target.value)}
-            />
-            <InsertEmoticon />
-          </div>
-          <button type="submit">
-            <Send className="icons icon__send" />{' '}
-          </button>
-        </form>
+      <div className="form__wrapper">
+        <div className="messageView__form">
+          <CropOriginal className="icons" />
+          <GifOutlined className="icons" />
+          <form onSubmit={onSubmitHandler}>
+            <div className="messageView__form__input">
+              <input
+                type="text"
+                placeholder="Start a new message"
+                value={messageText}
+                onChange={(e) => setMessageText(e.target.value)}
+              />
+              <InsertEmoticon />
+            </div>
+            <button type="submit">
+              <Send className="icons icon__send" />{' '}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

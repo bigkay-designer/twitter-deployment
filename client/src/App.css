@@ -22,7 +22,7 @@ body {
 .success {
   background-color: rgb(77, 177, 68);
   font-size: 18px;
-  color: ivory;
+  color: rgb(238, 238, 238);
   margin: 15px 0 20px;
   padding: 10px;
   font-weight: 900;

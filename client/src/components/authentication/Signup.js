@@ -20,6 +20,10 @@ function Signup() {
     status: false,
     msg: '',
   });
+  const [errorMessageUsername, setErrorMessageUsername] = useState({
+    status: false,
+    msg: '',
+  });
   const [successSignup, setSuccessSignup] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
@@ -37,6 +41,7 @@ function Signup() {
       .post('/api/signup', newUser)
       .then((res) => {
         setSuccessSignup(true);
+        window.scrollTo(0, 0);
         window.setTimeout(() => {
           setRedirect(true);
           setSuccessSignup(false);
@@ -49,17 +54,31 @@ function Signup() {
       .catch((err) => {
         const errResponse = err.response.data.msg;
         errResponse ===
-          'The password needs to be at least 5 characters long.' &&
+          'The password needs to be at least 6 characters long.' &&
           setErrorMessagePassword({
             status: true,
             msg: errResponse,
           });
 
-        errResponse === 'An account with this email already exists.' &&
-          setErrorMessageEmail({
-            status: true,
-            msg: errResponse,
-          });
+        errResponse === 'An account with this email already exists.'
+          ? setErrorMessageEmail({
+              status: true,
+              msg: errResponse,
+            })
+          : setErrorMessageEmail({
+              status: false,
+              msg: '',
+            });
+
+        errResponse === 'An account with this username already exists.'
+          ? setErrorMessageUsername({
+              status: true,
+              msg: errResponse,
+            })
+          : setErrorMessageUsername({
+              status: false,
+              msg: '',
+            });
       });
   };
 
@@ -69,7 +88,7 @@ function Signup() {
     password.length < 6
       ? setErrorMessagePassword({
           status: true,
-          msg: 'The password needs to be at least 5 characters long.',
+          msg: 'The password needs to be at least 6 characters long.',
         })
       : setErrorMessagePassword({
           status: false,
@@ -132,6 +151,9 @@ function Signup() {
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
+              {errorMessageUsername.status && (
+                <h3 className="error">{errorMessageUsername.msg}</h3>
+              )}
             </div>
             <div className="form__div">
               <label htmlFor="password">password</label>

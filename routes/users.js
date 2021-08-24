@@ -38,12 +38,17 @@ router.route('/signup').post(async (req, res) => {
     if (password.length < 6)
       return res
         .status(400)
-        .json({ msg: 'The password needs to be at least 5 characters long.' });
-    const existingUser = await User.findOne({ email: email });
-    if (existingUser)
+        .json({ msg: 'The password needs to be at least 6 characters long.' });
+    const existingUserEmail = await User.findOne({ email: email });
+    const existingUserUsername = await User.findOne({ username: username });
+    if (existingUserEmail)
       return res
         .status(400)
         .json({ msg: 'An account with this email already exists.' });
+    if (existingUserUsername)
+      return res
+        .status(400)
+        .json({ msg: 'An account with this username already exists.' });
     if (!name) name = email;
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);

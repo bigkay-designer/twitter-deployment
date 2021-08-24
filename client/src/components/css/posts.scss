@@ -32,9 +32,10 @@
       .posts__description {
         margin: 10px 0;
         line-height: 1.5em;
-        span {
+        p {
           word-break: break-all;
-          font-size: 14px;
+          font-size: 1rem;
+          color: rgb(28, 33, 34);
         }
       }
     }
@@ -52,6 +53,9 @@
       align-items: center;
       margin-top: 10px;
       cursor: pointer;
+      svg {
+        font-size: 1.3rem;
+      }
     }
     .showSidebar__notAvailable {
       cursor: not-allowed;

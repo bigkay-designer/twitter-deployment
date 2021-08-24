@@ -55,9 +55,10 @@
   line-height: 1.5em;
 }
 
-.posts .posts__body .posts__header .posts__description span {
+.posts .posts__body .posts__header .posts__description p {
   word-break: break-all;
-  font-size: 14px;
+  font-size: 1rem;
+  color: #1c2122;
 }
 
 .posts .posts__body img {
@@ -82,6 +83,10 @@
           align-items: center;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.posts .posts__body .posts__icons svg {
+  font-size: 1.3rem;
 }
 
 .posts .posts__body .showSidebar__notAvailable {

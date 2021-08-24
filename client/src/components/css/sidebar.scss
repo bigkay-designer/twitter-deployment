@@ -11,11 +11,11 @@
     .messageView__form {
       border: 1px solid var(--twitter-borderBottom);
       background-color: #fff;
-      display: grid;
+      display: none;
       grid-template-columns: 10% 10% 80%;
       align-items: center;
       width: 100%;
-      padding: 15px 0;
+      padding: 10px 0;
       .icons {
         color: var(--twitter-color);
         margin: 0 10px;

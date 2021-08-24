@@ -5,7 +5,7 @@ const messages = new Schema({
   message: String,
   name: String,
   time: String,
-  // currentDay: String,
+  currentDay: String,
 });
 
 module.exports = mongoose.model('messages', messages);

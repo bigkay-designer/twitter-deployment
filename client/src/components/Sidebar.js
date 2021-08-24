@@ -45,9 +45,7 @@ function Sidebar() {
     };
     axios
       .post('api/message/new', newData)
-      .then((res) => {
-        // console.log(res)
-      })
+      .then((res) => {})
       .catch((err) => console.log(err));
     setMessageText('');
   };
